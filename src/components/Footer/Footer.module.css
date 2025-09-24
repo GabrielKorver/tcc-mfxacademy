@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  color: white;
+  background-color: #6073e1;
+  text-align: center;
+  padding: 1rem;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #ffffff;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 0.8rem;
+  background-color: #6073e1;
+  z-index: 10;
+}

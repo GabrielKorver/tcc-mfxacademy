@@ -1,0 +1,99 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #e8eaf7;
+  padding: 1rem;
+}
+
+.containerRecuperar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 18px;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.containerRecuperar label {
+  align-self: flex-start;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.containerRecuperar input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.containerRecuperar input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+.containerRecuperar button {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #6073e1, #6c63ff);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.containerRecuperar button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sucesso {
+  color: blue;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.erro {
+  color: red;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .containerRecuperar {
+    padding: 1.5rem;
+  }
+
+  .containerRecuperar input,
+  .containerRecuperar button {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+}
