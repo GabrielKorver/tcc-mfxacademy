@@ -83,16 +83,6 @@ a {
   color: #333;
 }
 
-.container_login input {
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
 .container_login input:focus {
   border-color: #007bff;
   outline: none;
@@ -115,6 +105,46 @@ a {
 .container_login button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Mantém input de senha no mesmo padrão que os outros inputs */
+.inputSenha {
+  position: relative;
+  width: 100%;
+}
+
+.inputPadrao {
+  width: 100%;
+  padding-right: 40px; /* espaço para o ícone */
+  padding-left: 0.75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.inputSenha .inputPadrao:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+.toggleSenha {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+  color: #555;
+  transition: 0.3s;
+}
+
+.toggleSenha:hover {
+  color: #000;
+  transform: translateY(-50%) scale(1.1);
 }
 
 @keyframes fadeIn {
