@@ -5,6 +5,7 @@ import { LuMessageSquarePlus } from "react-icons/lu";
 import { FaHome } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import logo from "../../assets/img_logo.png";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -38,8 +39,9 @@ const Header = () => {
   return (
     <>
       <header className={Style.container}>
-        <div className={Style.boxFeed}>
-          <h1 className={Style.logo}>Dev Network</h1>
+        <div className={Style.brand}>
+          <img src={logo} alt="Logo DevNetwork" className={Style.logoImg} />
+          <h1 className={Style.logo}>DevNetwork</h1>
           <p className={Style.textIcon}>
             <FaHome className={Style.icon} />
             Feed

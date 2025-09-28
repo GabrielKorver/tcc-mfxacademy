@@ -14,6 +14,18 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logoImg {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+}
+
 .logo {
   font-size: 1.2rem;
   font-weight: 700;
