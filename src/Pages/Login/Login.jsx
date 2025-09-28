@@ -12,17 +12,23 @@ const Login = () => {
 
   const logar = async () => {
     try {
+
+      if (!email || !senha) {
+        toast.error("Preencha o email e a senha!");
+        return;
+      }
       const URL = "https://api-cadastro-backtend.onrender.com/usuario";
       const response = await fetch(URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, senha }),
+        method: "GET",
+        headers: { "Content-Type": "application/json" }
       });
 
       const data = await response.json();
 
-      if (response.ok) {
-        localStorage.setItem("usuario", JSON.stringify(data));
+      const usuario = data.find((user) => user.email === email && user.senha === senha);
+
+      if (usuario) {
+        localStorage.setItem("usuario", JSON.stringify(usuario));
         toast.success("Login realizado com sucesso!");
         setTimeout(() => {
           window.location.href = "/home";
@@ -49,12 +55,12 @@ const Login = () => {
             Entre para a maior comunidade para devs!!
           </p>
 
-          <label htmlFor="nome">Nome</label>
+          <label htmlFor="email">Nome</label>
           <input
-            type="text"
+            type="email"
             onChange={(e) => setEmail(e.target.value)}
             id="nome"
-            placeholder="Digite seu nome"
+            placeholder="Digite seu email"
             className={Style.inputPadrao}
           />
 
