@@ -6,10 +6,13 @@ import { FaHome } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import logo from "../../assets/img_logo.png";
+import ModalNovaPergunta from "../ModalNovaPergunta/ModalNovaPergunta";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [usuarioLogado, setUsuarioLogado] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
 
   function toggleMenu() {
     setMenuOpen(!menuOpen);
@@ -55,7 +58,7 @@ const Header = () => {
         <div
           className={`${Style.boxOptions} ${menuOpen ? Style.showMenu : ""}`}
         >
-          <p className={Style.textIcon}>
+          <p onClick={() => setShowModal(true)} className={Style.textIcon}>
             <LuMessageSquarePlus className={Style.icon} />
             Nova pergunta
           </p>
@@ -73,6 +76,8 @@ const Header = () => {
           </p>
         </div>
       </header>
+
+      {showModal && <ModalNovaPergunta onClose={() => setShowModal(false)} />}
 
       <ToastContainer
         position="top-right"

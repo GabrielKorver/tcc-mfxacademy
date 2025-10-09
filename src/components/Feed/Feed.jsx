@@ -71,10 +71,12 @@ export const Feed = () => {
       </div>
       {/* ABRIR MODAL E FECHAR*/}
       {isVisible && (
-        <div>
-          <textarea name="" id=""></textarea>
-          <button>teste</button>
-          <button>teste 2</button>
+        <div className={Style.modal}>
+          <textarea></textarea>
+          <div className={Style.modalBtn}>
+            <button>Cancelar</button>
+            <button>Postar</button>
+          </div>
         </div>
       )}
     </div>

@@ -1,0 +1,75 @@
+/* Fundo escurecido */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* ocupa toda a largura da viewport */
+    height: 100vh;
+    /* ocupa toda a altura da viewport */
+    background: rgba(0, 0, 0, 0.7);
+    /* escurece o fundo */
+    display: flex;
+    justify-content: center;
+    /* centraliza horizontalmente */
+    align-items: center;
+    /* centraliza verticalmente */
+    z-index: 1000;
+    /* garante que fique acima do conteúdo */
+    backdrop-filter: blur(3px);
+    /* leve desfoque no fundo */
+}
+
+/* Caixa do modal */
+.modal {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    animation: scaleUp 0.25s ease;
+    /* pequena animação de entrada */
+}
+
+/* Título */
+.modal h2 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    color: #333;
+}
+
+/* Parágrafo */
+.modal p {
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+/* Botão */
+.modal button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.modal button:hover {
+    background-color: #0056b3;
+}
+
+/* Efeito de entrada */
+@keyframes scaleUp {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

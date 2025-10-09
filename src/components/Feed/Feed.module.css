@@ -83,11 +83,38 @@
 
 .iconLiked {
   font-size: 1.2rem;
-  color: #6073e1; /* vermelho quando curtido */
+  color: #6073e1;
+  /* vermelho quando curtido */
 }
 
 .actionBtn span {
   font-size: 0.95rem;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  width: 44rem;
+  height: 8.25rem;
+}
+
+button {
+  background-color: #6073E1;
+  color: #ffffff;
+  font-weight: bolder;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.modalBtn {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
 }
 
 @media screen and (max-width: 1024px) {
