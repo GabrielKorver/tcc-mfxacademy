@@ -1,67 +1,121 @@
-/* Fundo escurecido */
 .overlay {
     position: fixed;
-    top: 0;
+    top: 5rem;
     left: 0;
     width: 100vw;
-    /* ocupa toda a largura da viewport */
     height: 100vh;
-    /* ocupa toda a altura da viewport */
-    background: rgba(0, 0, 0, 0.7);
-    /* escurece o fundo */
     display: flex;
     justify-content: center;
-    /* centraliza horizontalmente */
-    align-items: center;
-    /* centraliza verticalmente */
+    align-items: start;
     z-index: 1000;
-    /* garante que fique acima do conteúdo */
     backdrop-filter: blur(3px);
-    /* leve desfoque no fundo */
 }
 
-/* Caixa do modal */
 .modal {
     background: #fff;
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     width: 90%;
-    max-width: 420px;
+    max-width: 32rem;
     text-align: center;
     animation: scaleUp 0.25s ease;
-    /* pequena animação de entrada */
+
 }
 
-/* Título */
-.modal h2 {
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-    color: #333;
+.closeModal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+
+    h2 {
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+        color: #6073E1;
+    }
+
+    span {
+        cursor: pointer;
+    }
 }
 
-/* Parágrafo */
-.modal p {
-    color: #555;
-    margin-bottom: 1.5rem;
+input {
+    max-width: 100%;
+    outline-color: #0057b39c;
+    padding: 0.5rem 0.75rem;
 }
 
-/* Botão */
-.modal button {
-    background-color: #007bff;
-    color: white;
+textarea {
+    max-width: 100%;
+    outline-color: #0057b39c;
+    padding: 0.5rem 0.75rem;
+    resize: none;
+}
+
+button {
+    background-color: #6073E1;
+}
+
+
+.pergunta {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    p {
+        text-align: start;
+        color: #555;
+        margin-bottom: 1rem;
+    }
+
+    .icon {
+        font-size: 1.5rem;
+        color: #6073E1;
+        cursor: pointer;
+    }
+
+    .tecnologias {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+
+        span {
+            background-color: #e0e0e0;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+
+        input {
+            outline: none;
+            font-size: 1rem;
+            width: 90%;
+        }
+
+        span:hover {
+            background-color: #ccc;
+            cursor: pointer;
+        }
+    }
+}
+
+.publicarButton {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
     border: none;
-    padding: 0.6rem 1.2rem;
     border-radius: 8px;
+    color: white;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.2s ease;
 }
 
-.modal button:hover {
-    background-color: #0056b3;
-}
 
-/* Efeito de entrada */
+
+
+
+
 @keyframes scaleUp {
     from {
         transform: scale(0.8);

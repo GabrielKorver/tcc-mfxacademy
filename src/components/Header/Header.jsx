@@ -5,7 +5,7 @@ import { LuMessageSquarePlus } from "react-icons/lu";
 import { FaHome } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import logo from "../../assets/img_logo.png";
+import logo from "../../assets/img_logo3.png";
 import ModalNovaPergunta from "../ModalNovaPergunta/ModalNovaPergunta";
 
 const Header = () => {
@@ -13,14 +13,13 @@ const Header = () => {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-
   function toggleMenu() {
     setMenuOpen(!menuOpen);
   }
 
   function logout() {
     localStorage.removeItem("usuario");
-    window.location.href = "/"; // redireciona para login
+    window.location.href = "/";
   }
 
   useEffect(() => {
@@ -29,7 +28,6 @@ const Header = () => {
     if (usuario) {
       setUsuarioLogado(usuario);
     } else {
-      // Exibe o toast e aguarda 1.5s antes de redirecionar
       toast.error("Você precisa estar logado para acessar o feed", {
         autoClose: 3000,
       });
@@ -68,7 +66,11 @@ const Header = () => {
           </p>
           <p>
             Bem-vindo:{" "}
-            {usuarioLogado ? usuarioLogado.name || usuarioLogado.email : ""}
+            <span title={usuarioLogado?.name || ""} className={Style.usuarioLogado}>
+              {usuarioLogado?.name
+                ? `${usuarioLogado.name[0].toUpperCase()}${usuarioLogado.name[1]?.toUpperCase() || ""}`
+                : usuarioLogado?.email || ""}
+            </span>
           </p>
           <p className={Style.textIcon} onClick={logout}>
             <FiLogOut className={Style.icon} />

@@ -66,14 +66,29 @@ a {
 .title {
   font-size: 2rem;
   font-weight: bold;
-  color: #6c63ff;
+  color: #4661FD;
   margin-bottom: 1rem;
   text-align: center;
   letter-spacing: 1px;
 }
 
+.container_logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .imgLogo {
+    width: 3rem;
+    margin-bottom: 1rem;
+    opacity: 70%;
+  }
+
+}
+
 .subtitle {
   text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .container_login label {
@@ -96,7 +111,7 @@ a {
   font-weight: 600;
   border: none;
   border-radius: 6px;
-  background: linear-gradient(135deg, #6073e1, #6c63ff);
+  background-color: #4661FD;
   color: #fff;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -115,7 +130,8 @@ a {
 
 .inputPadrao {
   width: 100%;
-  padding-right: 40px; /* espaço para o ícone */
+  padding-right: 40px;
+  /* espaço para o ícone */
   padding-left: 0.75rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -152,6 +168,7 @@ a {
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -173,7 +190,8 @@ a {
   .container_image img {
     width: 100%;
     height: auto;
-    object-fit: contain; /* evita quebrar fundo no mobile */
+    object-fit: contain;
+    /* evita quebrar fundo no mobile */
   }
 
   .container_login {

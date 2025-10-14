@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import Style from "./Login.module.css";
 import devImage from "../../assets/img.login2.jpg";
+import imgLogo from "../../assets/img_logo2.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -50,7 +51,10 @@ const Login = () => {
 
       <div className={Style.container_login}>
         <div className={Style.container_box}>
-          <h1 className={Style.title}>Dev Network</h1>
+          <div className={Style.container_logo}>
+            <img className={Style.imgLogo} src={imgLogo} alt="Logo Dev Network" />
+            <h1 className={Style.title}>Dev Network</h1>
+          </div>
           <p className={Style.subtitle}>
             Entre para a maior comunidade para devs!!
           </p>
