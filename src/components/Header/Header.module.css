@@ -9,7 +9,7 @@
   align-items: center;
   height: 3.5rem;
   padding: 0 1rem;
-  background-color: #6073e1;
+  background-color: #4661fd;
   color: #fff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
@@ -73,7 +73,7 @@
   padding: 0.5rem;
   border: none;
   border-radius: 50%;
-  color: #6073e1;
+  color: #4661fd;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
@@ -99,7 +99,7 @@
     position: absolute;
     top: 3.5rem;
     right: 0;
-    background-color: #6073e1;
+    background-color: #4661fd;
     padding: 1rem;
     gap: 1rem;
     width: 100%;

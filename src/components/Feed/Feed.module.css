@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 4rem 1rem;
+  margin: 4rem 0rem;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -37,6 +37,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 1.5rem;
+  cursor: auto;
 }
 
 .containerRelacionadosBox {
@@ -45,7 +46,7 @@
   margin-top: 0.5rem;
 
   span {
-    background-color: #6073e1;
+    background-color: #4661fd;
     color: #ffffff;
     padding: 0.3rem;
     border-radius: 0.5rem;
@@ -73,7 +74,7 @@
 }
 
 .actionBtn:hover {
-  color: #6073e1;
+  color: #4661fd;
   transform: scale(1.05);
 }
 
@@ -83,7 +84,7 @@
 
 .iconLiked {
   font-size: 1.2rem;
-  color: #6073e1;
+  color: #4661fd;
   /* vermelho quando curtido */
 }
 
@@ -94,15 +95,21 @@
 .modal {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 textarea {
-  width: 44rem;
-  height: 8.25rem;
+  width: 80%;
+  box-sizing: border-box;
+  height: 8.25rem; /* mantém a altura atual; altere se quiser */
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
 }
 
 button {
-  background-color: #6073E1;
+  background-color: #4661fd;
   color: #ffffff;
   font-weight: bolder;
   padding: 0.5rem;
@@ -123,7 +130,7 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0rem 1rem;
+    margin: 1rem 1rem;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

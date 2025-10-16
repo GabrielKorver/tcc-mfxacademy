@@ -66,7 +66,7 @@ a {
 .title {
   font-size: 2rem;
   font-weight: bold;
-  color: #4661FD;
+  color: #4661fd;
   margin-bottom: 1rem;
   text-align: center;
   letter-spacing: 1px;
@@ -83,7 +83,6 @@ a {
     margin-bottom: 1rem;
     opacity: 70%;
   }
-
 }
 
 .subtitle {
@@ -111,7 +110,7 @@ a {
   font-weight: 600;
   border: none;
   border-radius: 6px;
-  background-color: #4661FD;
+  background-color: #4661fd;
   color: #fff;
   cursor: pointer;
   transition: all 0.3s ease;
