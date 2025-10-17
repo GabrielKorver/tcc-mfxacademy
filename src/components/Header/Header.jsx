@@ -19,11 +19,11 @@ const Header = () => {
 
   function logout() {
     localStorage.removeItem("usuario");
-    toast.success("Deslogado com sucesso!", { autoClose: 2500 });
+    toast.success("Deslogado com sucesso!", { autoClose: 1500 });
 
     setTimeout(() => {
       window.location.href = "/";
-    }, 2500);
+    }, 2000);
   }
 
   useEffect(() => {
@@ -75,9 +75,8 @@ const Header = () => {
               className={Style.usuarioLogado}
             >
               {usuarioLogado?.name
-                ? `${usuarioLogado.name[0].toUpperCase()}${
-                    usuarioLogado.name[1]?.toUpperCase() || ""
-                  }`
+                ? `${usuarioLogado.name[0].toUpperCase()}${usuarioLogado.name[1]?.toUpperCase() || ""
+                }`
                 : usuarioLogado?.email || ""}
             </span>
           </p>

@@ -2,11 +2,22 @@
   display: grid;
   grid-template-columns: 30rem 1fr;
   background-color: #e8eaf7;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.container_left {
+  display: flex;
+  justify-content: center;
 }
 
 @media screen and (max-width: 1024px) {
   .container {
     display: flex;
     flex-direction: column;
+  }
+
+  .container_left {
+    display: block;
   }
 }

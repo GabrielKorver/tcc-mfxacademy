@@ -99,9 +99,10 @@
 }
 
 textarea {
-  width: 80%;
+  width: 90%;
   box-sizing: border-box;
-  height: 8.25rem; /* mantém a altura atual; altere se quiser */
+  height: 8.25rem;
+  /* mantém a altura atual; altere se quiser */
   margin: 0 auto;
   border: 1px solid #ccc;
   border-radius: 5px;
