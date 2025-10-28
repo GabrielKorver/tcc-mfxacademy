@@ -1,0 +1,122 @@
+.chatModal {
+  position: fixed;
+  bottom: 130px;
+  right: 60px;
+  width: 500px;
+  height: 400px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+.chatHeader {
+  background-color: #4661FD;
+  color: #fff;
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.chatBody {
+  padding: 10px;
+  flex: 1;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 150px auto;
+  gap: 4px;
+}
+
+.friendsList {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  justify-content: start;
+  align-items: start;
+}
+
+.chatMessages {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  border-left: 1px solid #ccc;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.messageLeft {
+  background-color: #e0e0e0;
+  padding: 8px 12px;
+  border-radius: 16px;
+  align-self: flex-start;
+  max-width: 80%;
+}
+
+.messageRight {
+  background-color: #4661FD;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 16px;
+  align-self: flex-end;
+  max-width: 80%;
+}
+
+.chatFooter {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+.chatFooter input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  outline: none;
+}
+
+.chatFooter button {
+  border: none;
+  background-color: #4661FD;
+  color: white;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+.floatingButton {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  background-color: #4661FD;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+  .chatModal {
+    width: 90%;
+    height: 50%;
+    right: 50%;
+    bottom: 50%;
+    transform: translate(50%, 50%);
+  }
+
+}
