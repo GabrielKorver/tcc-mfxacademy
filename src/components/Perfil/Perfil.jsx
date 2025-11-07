@@ -2,6 +2,9 @@ import Style from "../Perfil/Perfil.module.css";
 import { CiEdit } from "react-icons/ci";
 
 const Perfil = () => {
+
+  const usuario = JSON.parse(localStorage.getItem("usuario"));
+
   return (
     <div className={Style.container}>
       <div className={Style.perfil}>
@@ -14,20 +17,20 @@ const Perfil = () => {
 
       <div className={Style.avatar_perfil}>
         <img
-          src="https://robohash.org/e247115709924ae6b6d095cc7af55336?set=set4&bgset=bg2&size=400x400"
+          src={usuario.avatar_url}
           alt="avatar"
           style={{ width: "80px", height: "80px", borderRadius: "50%" }}
         />
         <div className={Style.avatar_name}>
           <p>
-            Nome: <strong>Nome API</strong>
+            Nome: <strong>{usuario.nome}</strong>
           </p>
-          <p>
-            Email: <strong>Email API</strong>
-          </p>
-          <p>
-            Membro desde: <strong>Data API</strong>
-          </p>
+          {/* <p>
+            Email: <strong>{usuario.email}</strong>
+          </p> */}
+          {/* <p>
+            Membro desde: <strong>{usuario.data_criacao}</strong>
+          </p> */}
         </div>
       </div>
 
@@ -35,20 +38,14 @@ const Perfil = () => {
         <p>
           <strong>Bio</strong>
         </p>
-        <span>Descricao da API</span>
+        <span>{usuario.biografia}</span>
       </div>
 
       <div className={Style.tecnologias}>
-        <p>Tecnologias</p>
+        <p><strong>Tecnologias</strong></p>
         <div className={Style.tecnologias_dev}>
           <span>
-            <strong>JavaScrip</strong>
-          </span>
-          <span>
-            <strong>React</strong>
-          </span>
-          <span>
-            <strong>Node</strong>
+            {usuario.habilidades}
           </span>
         </div>
       </div>

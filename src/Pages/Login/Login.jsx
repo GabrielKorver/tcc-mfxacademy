@@ -13,32 +13,35 @@ const Login = () => {
 
   const logar = async () => {
     try {
+      const URL = "http://127.0.0.1:3000/users/login";
 
-      if (!email || !senha) {
-        toast.error("Preencha o email e a senha!");
-        return;
-      }
-      const URL = "https://api-cadastro-backtend.onrender.com/usuario";
       const response = await fetch(URL, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" }
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, senha }),
       });
 
       const data = await response.json();
+      console.log(data)
 
-      const usuario = data.find((user) => user.email === email && user.senha === senha);
-
-      if (usuario) {
-        localStorage.setItem("usuario", JSON.stringify(usuario));
-        toast.success("Login realizado com sucesso!");
-        setTimeout(() => {
-          window.location.href = "/home";
-        }, 2000);
-      } else {
-        toast.error(data.error || "Credenciais inválidas!");
+      if (!email || !senha) {
+        toast.error(data.message);
+        return;
       }
+
+      if (!response.ok) {
+        toast.error(data.message || "Credenciais inválidas!");
+        return;
+      }
+
+      localStorage.setItem("usuario", JSON.stringify(data.user));
+      toast.success("Login realizado com sucesso!");
+
+      setTimeout(() => {
+        window.location.href = "/home";
+      }, 2000);
     } catch (error) {
-      toast.error("Erro ao conectar com o servidor");
+      toast.error("Erro ao conectar com o servidor.");
       console.error(error);
     }
   };

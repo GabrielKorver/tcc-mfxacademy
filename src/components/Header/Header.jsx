@@ -71,11 +71,11 @@ const Header = () => {
           <p>
             Bem-vindo:{" "}
             <span
-              title={usuarioLogado?.name || ""}
+              title={usuarioLogado?.nome || ""}
               className={Style.usuarioLogado}
             >
-              {usuarioLogado?.name
-                ? `${usuarioLogado.name[0].toUpperCase()}${usuarioLogado.name[1]?.toUpperCase() || ""
+              {usuarioLogado?.nome
+                ? `${usuarioLogado.nome[0].toUpperCase()}${usuarioLogado.nome[1]?.toUpperCase() || ""
                 }`
                 : usuarioLogado?.email || ""}
             </span>

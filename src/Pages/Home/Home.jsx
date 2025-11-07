@@ -19,10 +19,6 @@ const Home = () => {
         <div className={Style.container_right}>
           <Filtros />
           <Feed />
-          <Feed />
-          <Feed />
-          <Feed />
-          <Feed />
         </div>
         <Chat />
       </div>

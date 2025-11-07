@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Style from "../Feed/Feed.module.css";
 import { IoTimeOutline } from "react-icons/io5";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
@@ -8,6 +8,21 @@ export const Feed = () => {
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [perguntas, setPerguntas] = useState([]);
+
+  const listaPergutas = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:3000/perguntas/get");
+      const data = await response.json();
+      setPerguntas(data);
+    } catch (error) {
+      console.error("Erro ao buscar perguntas:", error);
+    }
+  };
+
+  useEffect(() => {
+    listaPergutas();
+  }, []);
 
   const toggleLike = () => {
     if (liked) {
@@ -22,34 +37,41 @@ export const Feed = () => {
     setIsVisible(!isVisible);
   };
 
-  return (
-    <div className={Style.container}>
+  const renderPergunta = (pergunta) => (
+    <div key={pergunta.id} className={Style.container}>
       <div className={Style.box}>
         <img
-          src="https://robohash.org/e247115709924ae6b6d095cc7af55336?set=set4&bgset=bg2&size=400x400"
+          src={pergunta.user_avatar}
           alt="avatar"
           style={{ width: "30px", height: "30px", borderRadius: "50%" }}
         />
         <p>
-          <strong>Nome API</strong>
+          <strong>{pergunta.user_name}</strong>
         </p>
         <span>
-          <IoTimeOutline /> 2 horas atrás
+          <IoTimeOutline /> {pergunta.data_criacao}
         </span>
       </div>
 
       <div className={Style.containerPergunta}>
         <p>
-          Pergunta: <strong>Pergunta da API . . .</strong>
+          Pergunta: <strong>{pergunta.titulo}</strong>
         </p>
         <p>
-          Descrição da dúvida <strong>Vem da API</strong>
+          Descrição da dúvida <strong>{pergunta.descricao}</strong>
         </p>
         <div className={Style.containerRelacionados}>
-          <p>Relacionado</p>
+          <strong>Relacionado</strong>
           <div className={Style.containerRelacionadosBox}>
-            <span>JavaScript</span>
-            <span>React</span>
+            {
+              (
+                typeof pergunta.tecnologias === "string" && pergunta.tecnologias.length > 0
+                  ? pergunta.tecnologias.split(",").map((t) => t.trim())
+                  : (Array.isArray(pergunta.tecnologias) ? pergunta.tecnologias : ["JavaScript", "React"])
+              ).map((tag, index) => (
+                <span key={index}>{tag}</span>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -69,7 +91,7 @@ export const Feed = () => {
           <span>Comentar</span>
         </button>
       </div>
-      {/* ABRIR MODAL E FECHAR*/}
+
       {isVisible && (
         <div className={Style.modal}>
           <textarea></textarea>
@@ -81,4 +103,6 @@ export const Feed = () => {
       )}
     </div>
   );
+
+  return <>{perguntas.map(renderPergunta)}</>;
 };
