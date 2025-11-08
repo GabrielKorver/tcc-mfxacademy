@@ -3,7 +3,6 @@ import Style from "../Recuperar/Recuperar.module.css";
 
 const Recuperar = () => {
   const [email, setEmail] = useState("");
-  const [palavra, setPalavra] = useState("");
   const [msg, setMsg] = useState("");
   const [tipoMsg, setTipoMsg] = useState("");
 
@@ -12,15 +11,15 @@ const Recuperar = () => {
     setTipoMsg("");
 
     try {
-      const res = await fetch("http://localhost:3000/api/recuperar", {
+      const response = await fetch("http://127.0.0.1:3000/mail/recuperar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, palavra }),
+        body: JSON.stringify({ email }),
       });
 
-      const data = await res.json();
+      const data = await response.json();
 
-      if (res.ok) {
+      if (response.ok) {
         setMsg(data.message);
         setTipoMsg("sucesso");
       } else {
@@ -44,12 +43,12 @@ const Recuperar = () => {
           placeholder="Digite seu email"
         />
 
-        <label>Palavra passe</label>
+        {/* <label>Palavra passe</label>
         <input
           type="password"
           onChange={(e) => setPalavra(e.target.value)}
           placeholder="Digite sua palavra passe"
-        />
+        /> */}
 
         <button onClick={esqueceuSenha}>Recuperar senha</button>
 
