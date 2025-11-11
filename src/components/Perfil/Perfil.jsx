@@ -1,17 +1,26 @@
+import { useState } from "react";
 import Style from "../Perfil/Perfil.module.css";
+import ModalPerfil from "../ModalPerfil/ModalPerfil.jsx";
 import { CiEdit } from "react-icons/ci";
 
 const Perfil = () => {
-
   const usuario = JSON.parse(localStorage.getItem("usuario"));
+  const [abrirModal, setAbrirModal] = useState(false);
+
+  const handleEditar = () => {
+    setAbrirModal(true);
+  };
+
+  const handleFecharModal = () => {
+    setAbrirModal(false);
+  };
 
   return (
     <div className={Style.container}>
       <div className={Style.perfil}>
         <h1>Meu Perfil</h1>
-        <p>
-          <CiEdit />
-          Editar
+        <p onClick={handleEditar} className={Style.editar}>
+          <CiEdit /> Editar
         </p>
       </div>
 
@@ -25,12 +34,6 @@ const Perfil = () => {
           <p>
             Nome: <strong>{usuario.nome}</strong>
           </p>
-          {/* <p>
-            Email: <strong>{usuario.email}</strong>
-          </p> */}
-          {/* <p>
-            Membro desde: <strong>{usuario.data_criacao}</strong>
-          </p> */}
         </div>
       </div>
 
@@ -42,13 +45,18 @@ const Perfil = () => {
       </div>
 
       <div className={Style.tecnologias}>
-        <p><strong>Tecnologias</strong></p>
+        <p>
+          <strong>Tecnologias</strong>
+        </p>
         <div className={Style.tecnologias_dev}>
-          <span>
-            {usuario.habilidades}
-          </span>
+          <span>{usuario.habilidades}</span>
         </div>
       </div>
+
+      {/* Renderiza o modal somente se abrirModal for true */}
+      {abrirModal && (
+        <ModalPerfil onClose={handleFecharModal} usuario={usuario} />
+      )}
     </div>
   );
 };

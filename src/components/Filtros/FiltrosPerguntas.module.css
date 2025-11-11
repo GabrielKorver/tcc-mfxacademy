@@ -1,13 +1,14 @@
 .container {
-/* position: relative; */
-/* top: 100px; */
-margin-top: 4.375rem;
-display: flex;
-justify-content: center;
-width: 100%;
-background-color: #e8eaf7;
-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-padding: 1rem;
+  /* position: relative; */
+  /* top: 100px; */
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #e8eaf7;
+  border-radius: 8px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 1rem;
 }
 
 .filtros {
@@ -62,7 +63,6 @@ select:hover {
 
 @media screen and (max-width: 1024px) {
   .container {
-    margin-top: 0;
+    margin-top: -48px;
   }
 }
-
