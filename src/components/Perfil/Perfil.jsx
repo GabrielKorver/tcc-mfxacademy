@@ -15,6 +15,15 @@ const Perfil = () => {
     setAbrirModal(false);
   };
 
+  if (!usuario) {
+    return (
+      <div className={Style.container}>
+        <h2>Nenhum usuário encontrado</h2>
+        <p>Faça login ou cadastre-se para ver o perfil.</p>
+      </div>
+    );
+  }
+
   return (
     <div className={Style.container}>
       <div className={Style.perfil}>
