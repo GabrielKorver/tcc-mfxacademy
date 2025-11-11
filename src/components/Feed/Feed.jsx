@@ -96,8 +96,8 @@ export const Feed = () => {
         <div className={Style.modal}>
           <textarea></textarea>
           <div className={Style.modalBtn}>
-            <button>Cancelar</button>
-            <button>Postar</button>
+            <button onClick={toggleVisibility} className={Style.actionBtn}>Cancelar</button>
+            <button className={Style.actionBtn}>Postar</button>
           </div>
         </div>
       )}

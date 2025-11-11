@@ -63,6 +63,6 @@ select:hover {
 
 @media screen and (max-width: 1024px) {
   .container {
-    margin-top: -48px;
+    margin-top: -58px;
   }
 }

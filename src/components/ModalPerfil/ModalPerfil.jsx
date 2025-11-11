@@ -1,7 +1,6 @@
 import { TfiClose } from "react-icons/tfi";
 import Style from "./ModalPerfil.module.css";
-import { toast, ToastContainer } from "react-toastify"; // 👈 precisa importar ToastContainer aqui
-import "react-toastify/dist/ReactToastify.css"; // 👈 importa o CSS do toast
+import { toast, ToastContainer } from "react-toastify";
 import { useState } from "react";
 
 const ModalPerfil = ({ onClose, usuario }) => {
@@ -38,7 +37,7 @@ const ModalPerfil = ({ onClose, usuario }) => {
         console.error("Erro ao atualizar:", dados);
         toast.error(
           dados.error ||
-            "Erro ao atualizar o perfil. Verifique os dados e tente novamente."
+          "Erro ao atualizar o perfil. Verifique os dados e tente novamente."
         );
         return;
       }
@@ -56,7 +55,7 @@ const ModalPerfil = ({ onClose, usuario }) => {
       setTimeout(() => {
         onClose();
         window.location.reload();
-      }, 1500);
+      }, 2000);
     } catch (error) {
       console.error(error);
       toast.error(
@@ -72,7 +71,7 @@ const ModalPerfil = ({ onClose, usuario }) => {
           <TfiClose size={20} />
         </button>
 
-        <h2>Editar Perfil</h2>
+        <h2 className={Style.tittle}>Editar Perfil</h2>
 
         <div className={Style.formGroup}>
           <label>Nome</label>

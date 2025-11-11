@@ -65,28 +65,40 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  background: transparent;
-  border: none;
+  background: #f7f8ff;
+  border: 1px solid #e0e3ff;
+  border-radius: 0.6rem;
   cursor: pointer;
   font-size: 1rem;
   color: #555;
-  transition: color 0.3s ease, transform 0.2s ease;
+  padding: 0.4rem 0.8rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .actionBtn:hover {
-  color: #4661fd;
-  transform: scale(1.05);
+  color: #ffffff;
+  background-color: #4661fd;
+  border-color: #4661fd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(70, 97, 253, 0.3);
 }
 
 .icon {
   font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.actionBtn:hover .icon {
+  transform: scale(1.1);
 }
 
 .iconLiked {
   font-size: 1.2rem;
   color: #4661fd;
-  /* vermelho quando curtido */
 }
+
 
 .actionBtn span {
   font-size: 0.95rem;
@@ -110,8 +122,8 @@ textarea {
 }
 
 button {
-  background-color: #4661fd;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #4661fd;
   font-weight: bolder;
   padding: 0.5rem;
   border: none;

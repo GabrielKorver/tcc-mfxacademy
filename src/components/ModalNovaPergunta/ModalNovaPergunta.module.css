@@ -60,10 +60,6 @@ textarea {
     resize: none;
 }
 
-button {
-    background-color: #6073E1;
-}
-
 .pergunta {
     display: flex;
     flex-direction: column;
@@ -112,10 +108,17 @@ button {
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 8px;
+    background-color: #4661FD;
     color: white;
     font-size: 1rem;
     cursor: pointer;
     width: 100%;
+}
+
+.publicarButton:hover {
+    background-color: #fff;
+    color: #4661FD;
+    border: 1px solid #4661FD;
 }
 
 @media (max-width: 480px) {
