@@ -55,7 +55,7 @@ const Perfil = () => {
 
       <div className={Style.tecnologias}>
         <p>
-          <strong>Tecnologias</strong>
+          <strong>Habilidades</strong>
         </p>
         <div className={Style.tecnologias_dev}>
           <span>{usuario.habilidades}</span>

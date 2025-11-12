@@ -22,7 +22,7 @@ const Header = () => {
     toast.success("Deslogado com sucesso!", { autoClose: 1500 });
 
     setTimeout(() => {
-      window.location.href = "/";
+      window.location.href = "/Login";
     }, 2000);
   }
 
