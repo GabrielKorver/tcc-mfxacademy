@@ -14,6 +14,7 @@ export const Feed = () => {
     try {
       const response = await fetch("http://127.0.0.1:3000/perguntas/get");
       const data = await response.json();
+      data.reverse();
       setPerguntas(data);
     } catch (error) {
       console.error("Erro ao buscar perguntas:", error);
@@ -63,15 +64,7 @@ export const Feed = () => {
         <div className={Style.containerRelacionados}>
           <strong>Relacionado</strong>
           <div className={Style.containerRelacionadosBox}>
-            {
-              (
-                typeof pergunta.tecnologias === "string" && pergunta.tecnologias.length > 0
-                  ? pergunta.tecnologias.split(",").map((t) => t.trim())
-                  : (Array.isArray(pergunta.tecnologias) ? pergunta.tecnologias : ["JavaScript", "React"])
-              ).map((tag, index) => (
-                <span key={index}>{tag}</span>
-              ))
-            }
+            <span>{pergunta.assunto_nome}</span>
           </div>
         </div>
       </div>
@@ -96,7 +89,9 @@ export const Feed = () => {
         <div className={Style.modal}>
           <textarea></textarea>
           <div className={Style.modalBtn}>
-            <button onClick={toggleVisibility} className={Style.actionBtn}>Cancelar</button>
+            <button onClick={toggleVisibility} className={Style.actionBtn}>
+              Cancelar
+            </button>
             <button className={Style.actionBtn}>Postar</button>
           </div>
         </div>
