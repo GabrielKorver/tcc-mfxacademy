@@ -17,7 +17,7 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <section className={styles.hero}>
+      <section id="projeto"className={styles.hero}>
         <h1>Bem-vindo ao Devnetwork</h1>
         <p>
           Uma plataforma criada por desenvolvedores iniciantes que buscam transformar ideias em realidade através do código.
@@ -26,47 +26,45 @@ export default function LandingPage() {
 
         <div className={styles.features}>
           <div className={styles.card}>
-            <span className={styles.icon}>💻</span>
-            <h3>Código Limpo</h3>
-            <p>Desenvolvido com as melhores práticas e padrões modernos.</p>
+            <span className={styles.icon}>💡</span>
+            <h3>Comunidade Ativa</h3>
+            <p>Interaja com outros desenvolvedores, compartilhe experiências e cresça junto com a comunidade Devnetwork.</p>
           </div>
           <div className={styles.card}>
-            <span className={styles.icon}>⚡</span>
-            <h3>Alta Performance</h3>
-            <p>Otimizado para velocidade e eficiência em cada interação.</p>
+            <span className={styles.icon}>💬</span>
+            <h3>Perguntas e Respostas</h3>
+            <p>Tire dúvidas, ajude outros devs e colabore para fortalecer o aprendizado coletivo.</p>
           </div>
           <div className={styles.card}>
-            <span className={styles.icon}>✨</span>
-            <h3>Inovação</h3>
-            <p>Tecnologias modernas e evolução contínua.</p>
+            <span className={styles.icon}>🚀</span>
+            <h3>Evolução Profissional</h3>
+            <p>Aprenda constantemente e transforme conhecimento em oportunidades reais no mundo da tecnologia.</p>
           </div>
         </div>
 
         <div className={styles.missao}>
           <h2>Nossa Missão</h2>
           <p>
-            Criar soluções tecnológicas acessíveis e intuitivas que empoderem
-            usuários e desenvolvedores. Acreditamos que a tecnologia deve ser
-            inclusiva e impactar positivamente a vida das pessoas.
+            Nossa missão é criar um ambiente colaborativo onde o aprendizado, a troca de conhecimento e a prática constante sejam o caminho para o crescimento profissional.
+            Buscamos inspirar e conectar desenvolvedores iniciantes, oferecendo um espaço onde cada código escrito, cada dúvida resolvida e cada projeto compartilhado se tornam passos importantes rumo à evolução na jornada tech.
           </p>
         </div>
       </section>
 
-      <section className={styles.creators}>
+      <section id="criadores" className={styles.creators}>
         <h2>Conheça os Criadores</h2>
-        <p>Desenvolvedores iniciantes com paixão por tecnologia e inovação</p>
+        <p>Desenvolvedores iniciantes apaixonados por tecnologia</p>
 
         <div className={styles.creatorCards}>
           <div className={styles.creator}>
             <img
-              src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400"
-              alt="Ana Silva"
+              src="https://media.licdn.com/dms/image/v2/D4D03AQHefBz7prlvuw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1728178950809?e=1764806400&v=beta&t=ZfrrR1QNfjBOpUmwbyd5l3nxRYwqMwCwrQsm9p94nk8"
+              alt="Gabriel Almeida"
             />
-            <h3>Ana Silva</h3>
+            <h3>Gabriel Almeida</h3>
             <span>Full Stack Developer</span>
             <p>
-              Apaixonada por criar interfaces intuitivas e experiências
-              marcantes. Especializada em React e design systems.
+             Motivado pela paixão por tecnologia e o desejo constante de aprender, estou pronto para enfrentar desafios e contribuir com soluções inovadoras.
             </p>
             <div className={styles.socials}>
               <FaGithub size={20} />
@@ -77,14 +75,13 @@ export default function LandingPage() {
 
           <div className={styles.creator}>
             <img
-              src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=400"
-              alt="Carlos Mendes"
+              src="https://media.licdn.com/dms/image/v2/D4E03AQF-x3Lc3cByfQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1700264504294?e=1764806400&v=beta&t=HSzpiSJ-fkgDJ7hhnpKO8_8Q27ixSlk8SK7eY-Bz3_s"
+              alt="Mayara Centeno"
             />
-            <h3>Carlos Mendes</h3>
-            <span>Backend Developer</span>
+            <h3>Mayara Centeno</h3>
+            <span>Full Stack Developer</span>
             <p>
-              Especialista em APIs escaláveis e otimização de performance.
-              Entusiasta de banco de dados e arquitetura.
+              Impulsionada pela vontade de crescer e transformar minha carreira, estou focada em desenvolver habilidades como Full Stack Developer, unindo criatividade e lógica para criar soluções completas e impactantes.
             </p>
             <div className={styles.socials}>
               <FaGithub size={20} />
@@ -105,7 +102,7 @@ export default function LandingPage() {
 
       <footer className={styles.footer}>
         <p>Feito com ❤️ por desenvolvedores iniciantes</p>
-        <span>© 2024 DevPortal</span>
+        <span>© 2025 DevNetwork</span>
       </footer>
     </div>
   );

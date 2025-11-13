@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import Style from "./Login.module.css";
-import devImage from "../../assets/img.login2.jpg";
 import imgLogo from "../../assets/img_logo2.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -22,7 +21,7 @@ const Login = () => {
       });
 
       const data = await response.json();
-      console.log(data)
+      console.log(data);
 
       if (!email || !senha) {
         toast.error(data.message);
@@ -48,14 +47,14 @@ const Login = () => {
 
   return (
     <div className={Style.container}>
-      <div className={Style.container_image}>
-        <img src={devImage} alt="img.login.2" />
-      </div>
-
       <div className={Style.container_login}>
         <div className={Style.container_box}>
           <div className={Style.container_logo}>
-            <img className={Style.imgLogo} src={imgLogo} alt="Logo Dev Network" />
+            <img
+              className={Style.imgLogo}
+              src={imgLogo}
+              alt="Logo Dev Network"
+            />
             <h1 className={Style.title}>Dev Network</h1>
           </div>
           <p className={Style.subtitle}>
