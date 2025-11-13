@@ -5,16 +5,27 @@ import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 
 export const Feed = () => {
-  const [liked, setLiked] = useState(false);
-  const [likes, setLikes] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
   const [perguntas, setPerguntas] = useState([]);
+  const [visibleCommentId, setVisibleCommentId] = useState(null); // controla o modal de cada pergunta
+  const [likedPerguntas, setLikedPerguntas] = useState({}); // controla quais perguntas foram curtidas
+  const [likesCount, setLikesCount] = useState({}); // controla o número de likes por pergunta
 
   const listaPergutas = async () => {
     try {
       const response = await fetch("http://127.0.0.1:3000/perguntas/get");
       const data = await response.json();
       data.reverse();
+
+      // inicializa likes individuais (se quiser começar com 0)
+      const initialLikes = {};
+      const initialLiked = {};
+      data.forEach((p) => {
+        initialLikes[p.id] = 0;
+        initialLiked[p.id] = false;
+      });
+
+      setLikesCount(initialLikes);
+      setLikedPerguntas(initialLiked);
       setPerguntas(data);
     } catch (error) {
       console.error("Erro ao buscar perguntas:", error);
@@ -25,17 +36,20 @@ export const Feed = () => {
     listaPergutas();
   }, []);
 
-  const toggleLike = () => {
-    if (liked) {
-      setLikes(likes - 1);
-    } else {
-      setLikes(likes + 1);
-    }
-    setLiked(!liked);
+  const toggleLike = (id) => {
+    setLikedPerguntas((prevLiked) => ({
+      ...prevLiked,
+      [id]: !prevLiked[id],
+    }));
+
+    setLikesCount((prevLikes) => ({
+      ...prevLikes,
+      [id]: prevLikes[id] + (likedPerguntas[id] ? -1 : 1),
+    }));
   };
 
-  const toggleVisibility = () => {
-    setIsVisible(!isVisible);
+  const toggleVisibility = (id) => {
+    setVisibleCommentId((prevId) => (prevId === id ? null : id));
   };
 
   const renderPergunta = (pergunta) => (
@@ -70,26 +84,35 @@ export const Feed = () => {
       </div>
 
       <div className={Style.containerLike}>
-        <button onClick={toggleLike} className={Style.actionBtn}>
-          {liked ? (
+        <button
+          onClick={() => toggleLike(pergunta.id)}
+          className={Style.actionBtn}
+        >
+          {likedPerguntas[pergunta.id] ? (
             <FaHeart className={Style.iconLiked} />
           ) : (
             <FaRegHeart className={Style.icon} />
           )}
-          <span>{likes}</span>
+          <span>{likesCount[pergunta.id]}</span>
         </button>
 
-        <button onClick={toggleVisibility} className={Style.actionBtn}>
+        <button
+          onClick={() => toggleVisibility(pergunta.id)}
+          className={Style.actionBtn}
+        >
           <IoChatboxEllipsesOutline className={Style.icon} />
           <span>Comentar</span>
         </button>
       </div>
 
-      {isVisible && (
+      {visibleCommentId === pergunta.id && (
         <div className={Style.modal}>
           <textarea></textarea>
           <div className={Style.modalBtn}>
-            <button onClick={toggleVisibility} className={Style.actionBtn}>
+            <button
+              onClick={() => toggleVisibility(pergunta.id)}
+              className={Style.actionBtn}
+            >
               Cancelar
             </button>
             <button className={Style.actionBtn}>Postar</button>
