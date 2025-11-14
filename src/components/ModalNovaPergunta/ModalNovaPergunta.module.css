@@ -78,29 +78,16 @@ textarea {
     cursor: pointer;
 }
 
+.relacionado {
+    display: flex;
+    justify-content: center;
+}
+
 .tecnologias {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 0.5rem;
     margin-top: 0.5rem;
-}
-
-.tecnologias span {
-    background-color: #e0e0e0;
-    padding: 0.3rem 0.6rem;
-    border-radius: 12px;
-    font-size: 0.9rem;
-}
-
-.tecnologias input {
-    outline: none;
-    font-size: 1rem;
-    width: 90%;
-}
-
-.tecnologias span:hover {
-    background-color: #ccc;
-    cursor: pointer;
 }
 
 .publicarButton {

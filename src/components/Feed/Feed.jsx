@@ -14,7 +14,7 @@ export const Feed = () => {
     try {
       const response = await fetch("http://127.0.0.1:3000/perguntas/get");
       const data = await response.json();
-      data.reverse();
+      // data.reverse();
 
       // inicializa likes individuais (se quiser começar com 0)
       const initialLikes = {};
@@ -73,7 +73,7 @@ export const Feed = () => {
           Pergunta: <strong>{pergunta.titulo}</strong>
         </p>
         <p>
-          Descrição da dúvida <strong>{pergunta.descricao}</strong>
+          Descrição da dúvida: <strong>{pergunta.pergunta}</strong>
         </p>
         <div className={Style.containerRelacionados}>
           <strong>Relacionado</strong>
