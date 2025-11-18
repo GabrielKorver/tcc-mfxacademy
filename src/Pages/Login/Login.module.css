@@ -1,103 +1,122 @@
-html,
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: "Inter", sans-serif;
-}
-
-/* ===== CONTAINER GERAL ===== */
+/* === CONTAINER GERAL === */
 .container {
-  display: grid;
-  grid-template-columns: 50% 1fr;
-  gap: 1rem;
-  width: 100vw;
   height: 100vh;
-  background: radial-gradient(circle at top, #0f172a, #020617 70%);
-  color: #fff;
-}
-
-/* ===== IMAGEM ===== */
-.container_image {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 0.8rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(135deg, #0a0f1f 0%, #0d1b2a 100%);
+  font-family: "Poppins", sans-serif;
 }
 
-.container_image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.8;
+/* === CARD / CAIXA === */
+.card {
+  width: 420px;
+  padding: 3rem 2.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
 }
 
-/* ===== LOGIN CARD ===== */
-.container_login {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2.5rem;
-}
-
-.container_box {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-  border-radius: 18px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 420px;
-  animation: fadeIn 0.6s ease-in-out;
-}
-
-/* ===== LOGO E TÍTULO ===== */
-.container_logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.imgLogo {
-  width: 4rem;
-  margin-bottom: 0.6rem;
-  opacity: 0.9;
-}
-
+/* === TÍTULO COM GRADIENTE === */
 .title {
   font-size: 2rem;
   font-weight: 700;
   background: linear-gradient(to right, #38bdf8, #c084fc);
   -webkit-background-clip: text;
   color: transparent;
-  letter-spacing: 1px;
+  margin-bottom: 2rem;
 }
 
-.subtitle {
-  text-align: center;
-  font-size: 0.95rem;
-  opacity: 0.85;
-  margin-bottom: 1.8rem;
-}
-
-/* ===== LABELS E INPUTS ===== */
-.container_login label {
-  align-self: flex-start;
-  font-size: 0.85rem;
-  font-weight: 500;
+/* === LABELS === */
+label {
+  display: block;
+  text-align: left;
+  font-size: 0.9rem;
+  color: #bcd0e8;
   margin-bottom: 0.4rem;
-  color: #cbd5e1;
 }
 
-.inputPadrao {
+/* === INPUT PADRÃO === */
+input {
   width: 100%;
+  padding: 0.9rem;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+  transition: 0.3s;
+}
+
+input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 2px #6ab8ff;
+}
+
+/* === INPUT DE SENHA - WRAPPER === */
+.senhaWrapper {
+  width: 100%;
+  position: relative;
+}
+
+.toggleSenha {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #d3e1f7;
+  font-size: 1.2rem;
+}
+
+/* === LINK ESQUERDO (Esqueceu a senha) === */
+.linkLeft {
+  display: block;
+  text-align: left;
+  margin-top: -0.5rem;
+  color: #7cc7ff;
+}
+
+.linkLeft:hover {
+  color: #aee0ff;
+  text-decoration: underline;
+}
+
+/* === BOTÃO LOGIN === */
+.buttonLogin {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.9rem;
+  background: linear-gradient(to right, #38bdf8, #c084fc);
+  color: #0d1b2a;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buttonLogin:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* === LINK CADASTRO === */
+.options {
+  margin-top: 1.5rem;
+}
+
+.options a {
+  color: #7cc7ff;
+}
+
+.options a:hover {
+  text-decoration: underline;
+  color: #b8e6ff;
 }

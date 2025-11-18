@@ -4,49 +4,113 @@ import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 export default function LandingPage() {
   return (
     <div className={styles.container}>
-
       <header className={styles.header}>
         <div className={styles.headerContainer}>
+          
           <div className={styles.logo}>DevNetwork</div>
 
           <nav className={styles.menu}>
             <a href="#projeto">Sobre o Projeto</a>
             <a href="#criadores">Sobre os Criadores</a>
-            <a href="/Login" className={styles.loginBtn}>Ir para Login</a>
+            <a href="/Login" className={styles.loginBtn}>
+              Ir para Login
+            </a>
           </nav>
         </div>
       </header>
 
-      <section id="projeto"className={styles.hero}>
+      <section id="projeto" className={styles.hero}>
         <h1>Bem-vindo ao Devnetwork</h1>
         <p>
-          Uma plataforma criada por desenvolvedores iniciantes que buscam transformar ideias em realidade através do código.
-          Permite que os usuários façam perguntas e respostas, promovendo a interação e troca de conhecimento entre os DEVS registrados.
+          Uma plataforma criada por desenvolvedores iniciantes que buscam
+          transformar ideias em realidade através do código. Permite que os
+          usuários façam perguntas e respostas, promovendo a interação e troca
+          de conhecimento entre os DEVS registrados.
         </p>
 
         <div className={styles.features}>
           <div className={styles.card}>
             <span className={styles.icon}>💡</span>
             <h3>Comunidade Ativa</h3>
-            <p>Interaja com outros desenvolvedores, compartilhe experiências e cresça junto com a comunidade Devnetwork.</p>
+            <p>
+              Interaja com outros desenvolvedores, compartilhe experiências e
+              cresça junto com a comunidade Devnetwork.
+            </p>
           </div>
           <div className={styles.card}>
             <span className={styles.icon}>💬</span>
             <h3>Perguntas e Respostas</h3>
-            <p>Tire dúvidas, ajude outros devs e colabore para fortalecer o aprendizado coletivo.</p>
+            <p>
+              Tire dúvidas, ajude outros devs e colabore para fortalecer o
+              aprendizado coletivo.
+            </p>
           </div>
           <div className={styles.card}>
             <span className={styles.icon}>🚀</span>
             <h3>Evolução Profissional</h3>
-            <p>Aprenda constantemente e transforme conhecimento em oportunidades reais no mundo da tecnologia.</p>
+            <p>
+              Aprenda constantemente e transforme conhecimento em oportunidades
+              reais no mundo da tecnologia.
+            </p>
           </div>
+        </div>
+
+        <div className={styles.tecnologias}>
+          <h2>Tecnologias Utilizadas no Projeto</h2>
+          <p>
+            Este projeto foi desenvolvido utilizando um conjunto de tecnologias
+            modernas que garantem desempenho, organização e uma ótima
+            experiência para o usuário. 
+            
+            <p>A seguir, apresentamos as principais
+            ferramentas adotadas durante o desenvolvimento:{" "}</p>
+          </p>
+
+          <p>
+            🌐 HTML5 Base da estrutura da aplicação, garantindo acessibilidade e
+            semântica.
+          </p>
+          <p>
+            📦 JavaScript (ES6+) Linguagem utilizada para toda a lógica da
+            aplicação, com recursos modernos como hooks, import/export e arrow
+            functions.
+          </p>
+
+          <p>
+            ⚛️ React.js Framework JavaScript responsável pela construção da
+            interface. Permite criar componentes reutilizáveis, garantindo
+            velocidade e modularidade.
+          </p>
+          <p>
+            🧩 Vite Ferramenta de build extremamente rápida que facilita o
+            desenvolvimento com React. Possui recarregamento instantâneo e uma
+            performance superior ao Create React App.
+            <p>
+              🎨 CSS Modules Utilizado para estilizar os componentes com
+              isolamento de escopo. Evita conflitos de classe e deixa o código
+              mais limpo e organizado.
+            </p>
+            <p>
+              🖼️ Lucide Icons Biblioteca de ícones leves, modernos e altamente
+              compatíveis com React. Usada para exibir ícones como Github,
+              Linkedin e Mail.
+            </p>
+            <p>
+              🧪 Node.js & npm Usados para gerenciar dependências e executar
+              ferramentas de desenvolvimento.
+            </p>
+          </p>
         </div>
 
         <div className={styles.missao}>
           <h2>Nossa Missão</h2>
           <p>
-            Nossa missão é criar um ambiente colaborativo onde o aprendizado, a troca de conhecimento e a prática constante sejam o caminho para o crescimento profissional.
-            Buscamos inspirar e conectar desenvolvedores iniciantes, oferecendo um espaço onde cada código escrito, cada dúvida resolvida e cada projeto compartilhado se tornam passos importantes rumo à evolução na jornada tech.
+            Nossa missão é criar um ambiente colaborativo onde o aprendizado, a
+            troca de conhecimento e a prática constante sejam o caminho para o
+            crescimento profissional. Buscamos inspirar e conectar
+            desenvolvedores iniciantes, oferecendo um espaço onde cada código
+            escrito, cada dúvida resolvida e cada projeto compartilhado se
+            tornam passos importantes rumo à evolução na jornada tech.
           </p>
         </div>
       </section>
@@ -64,7 +128,9 @@ export default function LandingPage() {
             <h3>Gabriel Almeida</h3>
             <span>Full Stack Developer</span>
             <p>
-             Motivado pela paixão por tecnologia e o desejo constante de aprender, estou pronto para enfrentar desafios e contribuir com soluções inovadoras.
+              Motivado pela paixão por tecnologia e o desejo constante de
+              aprender, estou pronto para enfrentar desafios e contribuir com
+              soluções inovadoras.
             </p>
             <div className={styles.socials}>
               <FaGithub size={20} />
@@ -81,7 +147,10 @@ export default function LandingPage() {
             <h3>Mayara Centeno</h3>
             <span>Full Stack Developer</span>
             <p>
-              Impulsionada pela vontade de crescer e transformar minha carreira, estou focada em desenvolver habilidades como Full Stack Developer, unindo criatividade e lógica para criar soluções completas e impactantes.
+              Impulsionada pela vontade de crescer e transformar minha carreira,
+              estou focada em desenvolver habilidades como Full Stack Developer,
+              unindo criatividade e lógica para criar soluções completas e
+              impactantes.
             </p>
             <div className={styles.socials}>
               <FaGithub size={20} />
