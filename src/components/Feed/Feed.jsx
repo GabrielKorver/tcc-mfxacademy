@@ -6,17 +6,24 @@ import { IoChatboxEllipsesOutline } from "react-icons/io5";
 
 export const Feed = () => {
   const [perguntas, setPerguntas] = useState([]);
-  const [visibleCommentId, setVisibleCommentId] = useState(null); // controla o modal de cada pergunta
-  const [likedPerguntas, setLikedPerguntas] = useState({}); // controla quais perguntas foram curtidas
-  const [likesCount, setLikesCount] = useState({}); // controla o número de likes por pergunta
+  const [visibleCommentId, setVisibleCommentId] = useState(null);
+  const [likedPerguntas, setLikedPerguntas] = useState({});
+  const [likesCount, setLikesCount] = useState({});
+
+  // 👉 Função para formatar data (DD-MM-YYYY)
+  const formatarData = (dataISO) => {
+    const data = new Date(dataISO);
+    const dia = String(data.getDate()).padStart(2, "0");
+    const mes = String(data.getMonth() + 1).padStart(2, "0");
+    const ano = data.getFullYear();
+    return `${dia}-${mes}-${ano}`;
+  };
 
   const listaPergutas = async () => {
     try {
       const response = await fetch("http://127.0.0.1:3000/perguntas/get");
       const data = await response.json();
-      // data.reverse();
 
-      // inicializa likes individuais (se quiser começar com 0)
       const initialLikes = {};
       const initialLiked = {};
       data.forEach((p) => {
@@ -63,8 +70,10 @@ export const Feed = () => {
         <p>
           <strong>{pergunta.user_name}</strong>
         </p>
+
+        {/* 👉 AQUI A DATA JÁ ESTÁ FORMATADA */}
         <span>
-          <IoTimeOutline /> {pergunta.data_criacao}
+          <IoTimeOutline /> {formatarData(pergunta.data_criacao)}
         </span>
       </div>
 
@@ -75,6 +84,7 @@ export const Feed = () => {
         <p>
           Descrição da dúvida: <strong>{pergunta.pergunta}</strong>
         </p>
+
         <div className={Style.containerRelacionados}>
           <strong>Relacionado</strong>
           <div className={Style.containerRelacionadosBox}>

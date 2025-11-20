@@ -1,11 +1,26 @@
 import { useState } from "react";
 import Style from "../Perfil/Perfil.module.css";
 import ModalPerfil from "../ModalPerfil/ModalPerfil.jsx";
+import { IoTimeOutline } from "react-icons/io5";
+
 import { CiEdit } from "react-icons/ci";
 
 const Perfil = () => {
   const usuario = JSON.parse(localStorage.getItem("usuario"));
   const [abrirModal, setAbrirModal] = useState(false);
+
+  // 👉 Função para formatar data com tracinho
+  const formatarData = (dataISO) => {
+    const data = new Date(dataISO);
+    const dia = String(data.getDate()).padStart(2, "0");
+    const mes = String(data.getMonth() + 1).padStart(2, "0");
+    const ano = data.getFullYear();
+    return `${dia}-${mes}-${ano}`;
+  };
+
+  if (usuario) {
+    usuario.data_criacao = formatarData(usuario.data_criacao);
+  }
 
   const handleEditar = () => {
     setAbrirModal(true);
@@ -46,6 +61,15 @@ const Perfil = () => {
         </div>
       </div>
 
+      <div className={Style.membro}>
+        <span>
+          <strong>Membro desde:</strong>
+          <IoTimeOutline />
+          <p>{usuario.data_criacao}</p>
+        </span>
+      </div>
+
+
       <div className={Style.bio}>
         <p>
           <strong>Bio</strong>
@@ -62,7 +86,6 @@ const Perfil = () => {
         </div>
       </div>
 
-      {/* Renderiza o modal somente se abrirModal for true */}
       {abrirModal && (
         <ModalPerfil onClose={handleFecharModal} usuario={usuario} />
       )}

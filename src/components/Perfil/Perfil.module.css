@@ -48,6 +48,24 @@
   margin-top: 1rem;
 }
 
+.membro {
+  span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    /* espaço entre os itens */
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+
 .tecnologias {
   display: flex;
   flex-direction: column;
