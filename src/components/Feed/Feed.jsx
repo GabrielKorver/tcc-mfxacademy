@@ -60,12 +60,12 @@ export const Feed = () => {
   };
 
   const renderPergunta = (pergunta) => (
-    <div key={pergunta.id} className={Style.container}>
+    <div key={pergunta.id} className={Style.container_pergunta}>
       <div className={Style.box}>
         <img
           src={pergunta.user_avatar}
           alt="avatar"
-          style={{ width: "30px", height: "30px", borderRadius: "50%" }}
+          style={{ width: "50px", height: "0px", borderRadius: "50%" }}
         />
         <p>
           <strong>{pergunta.user_name}</strong>

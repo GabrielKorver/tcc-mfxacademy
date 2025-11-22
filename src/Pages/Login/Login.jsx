@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import Style from "./Login.module.css";
-import devImage from "../../assets/img.login2.jpg";
-import imgLogo from "../../assets/img_logo2.png";
+import styles from "./Login.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -22,7 +20,6 @@ const Login = () => {
       });
 
       const data = await response.json();
-      console.log(data)
 
       if (!email || !senha) {
         toast.error(data.message);
@@ -40,76 +37,61 @@ const Login = () => {
       setTimeout(() => {
         window.location.href = "/home";
       }, 2000);
-    } catch (error) {
+    } catch {
       toast.error("Erro ao conectar com o servidor.");
-      console.error(error);
     }
   };
 
   return (
-    <div className={Style.container}>
-      <div className={Style.container_image}>
-        <img src={devImage} alt="img.login.2" />
-      </div>
+    <div className={styles.container}>
+      <div className={styles.card}>
+        {/* <h1 className={styles.title}>DevNetwork</h1> */}
+        <div className={styles.logo}>
+          <img src="src/assets/novo_logo.png" alt="DevNetwork Logo" />
+          <span>DevNetwork</span>
+        </div>
 
-      <div className={Style.container_login}>
-        <div className={Style.container_box}>
-          <div className={Style.container_logo}>
-            <img className={Style.imgLogo} src={imgLogo} alt="Logo Dev Network" />
-            <h1 className={Style.title}>Dev Network</h1>
-          </div>
-          <p className={Style.subtitle}>
-            Entre para a maior comunidade para devs!!
-          </p>
+        {/* EMAIL */}
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Digite seu email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-          <label htmlFor="email">Nome</label>
+        {/* SENHA */}
+        <label htmlFor="senha">Senha</label>
+        <div className={styles.senhaWrapper}>
           <input
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-            id="nome"
-            placeholder="Digite seu email"
-            className={Style.inputPadrao}
+            type={mostrarSenha ? "text" : "password"}
+            id="senha"
+            placeholder="Digite sua senha"
+            onChange={(e) => setSenha(e.target.value)}
           />
 
-          {/* Input Senha */}
-          <label htmlFor="senha">Senha</label>
-          <div className={Style.inputSenha}>
-            <input
-              type={mostrarSenha ? "text" : "password"}
-              onChange={(e) => setSenha(e.target.value)}
-              id="senha"
-              placeholder="Digite sua senha"
-              className={Style.inputPadrao}
-            />
-            <span
-              className={Style.toggleSenha}
-              onClick={() => setMostrarSenha(!mostrarSenha)}
-            >
-              {mostrarSenha ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-            </span>
-          </div>
-
-          <a href="/recuperar">Esqueceu a Senha?</a>
-
-          <button onClick={logar}>Logar</button>
-
-          <p className={Style.options}>
-            <a href="/cadastro">Novo aqui? Cadastre-se</a>
-          </p>
+          <span
+            className={styles.toggleSenha}
+            onClick={() => setMostrarSenha(!mostrarSenha)}
+          >
+            {mostrarSenha ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+          </span>
         </div>
+
+        <a className={styles.linkLeft} href="/recuperar">
+          Esqueceu a senha?
+        </a>
+
+        <button className={styles.buttonLogin} onClick={logar}>
+          Logar
+        </button>
+
+        <p className={styles.options}>
+          <a href="/cadastro">Novo aqui? Cadastre-se</a>
+        </p>
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={1500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
+
+      <ToastContainer position="top-right" autoClose={1500} theme="colored" />
     </div>
   );
 };

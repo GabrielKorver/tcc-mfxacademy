@@ -4,7 +4,7 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #e8eaf7;
+  background: linear-gradient(135deg, #0a0f1f 0%, #0d1b2a 100%);
   padding: 1rem;
 }
 
@@ -12,22 +12,24 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   gap: 0.8rem;
   width: 100%;
   max-width: 400px;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(6px);
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 18px;
   animation: fadeIn 0.6s ease-in-out;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 .containerRecuperar label {
   align-self: flex-start;
   font-size: 0.9rem;
   font-weight: 500;
-  color: #333;
+  color: #fff;
 }
 
 .containerRecuperar input {
@@ -40,27 +42,28 @@
 }
 
 .containerRecuperar input:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+  background: linear-gradient(to right, #38bdf8, #c084fc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 2rem;
 }
 
 .containerRecuperar button {
-  width: 100%;
-  padding: 0.9rem;
+  background: linear-gradient(to right, #38bdf8, #c084fc);
+  color: #0d1b2a;
+  border: none;
+  border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
-  border: none;
-  border-radius: 6px;
-  background: #4661fd;
-  color: #fff;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .containerRecuperar button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background: #0090d1;
 }
 
 .sucesso {

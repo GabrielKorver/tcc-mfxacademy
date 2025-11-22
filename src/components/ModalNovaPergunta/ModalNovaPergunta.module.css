@@ -14,7 +14,7 @@
 }
 
 .modal {
-    background: #fff;
+    background: radial-gradient(circle at top, #0f172a, #020617 70%);
     padding: 2rem;
     border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;

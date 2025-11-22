@@ -29,10 +29,21 @@
 
 /* Logo */
 .logo {
-  color: #74b9ff;
-  font-size: 1.3rem;
+  background: linear-gradient(to right, #38bdf8, #c084fc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 2rem;
   font-weight: 700;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 45px;
+  display: flex;
+  align-items: center;
 }
 
 /* Sessões + botão */
@@ -56,15 +67,14 @@
 
 /* Botão */
 .loginBtn {
-  padding: 0.5rem 1.2rem;
-  background: #00aaff;
+  margin-top: 1rem;
+  background: linear-gradient(to right, #38bdf8, #c084fc);
   border: none;
-  border-radius: 6px;
-  color: white;
-  font-weight: 600;
+  padding: 0.7rem 1.3rem;
+  border-radius: 10px;
+  color: #fff;
   cursor: pointer;
-  transition: 0.25s ease;
-  white-space: nowrap;
+  transition: 0.2s;
 }
 
 .loginBtn:hover {
@@ -85,6 +95,10 @@ html {
   padding: 0 1rem;
 }
 
+.hero img {
+  width: 45px;
+}
+
 .tag {
   background: rgba(56, 189, 248, 0.15);
   color: #7dd3fc;
@@ -98,6 +112,7 @@ html {
   font-size: 3rem;
   font-weight: 700;
   background: linear-gradient(to right, #38bdf8, #c084fc);
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -140,6 +155,25 @@ html {
   margin-bottom: 0.5rem;
 }
 
+/* ====== TECNOLOGIAS UTILIZADAS ====== */
+
+.tecnologias {
+  margin-top: 4rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tecnologias h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
 /* ====== MISSÃO ====== */
 
 .missao {
@@ -170,6 +204,7 @@ html {
 .creators h2 {
   font-size: 2rem;
   background: linear-gradient(to right, #38bdf8, #c084fc);
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -210,6 +245,7 @@ html {
   display: inline-block;
   margin-top: 0.3rem;
   background: linear-gradient(to right, #38bdf8, #c084fc);
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   font-size: 0.9rem;
