@@ -6,8 +6,10 @@ export default function LandingPage() {
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.headerContainer}>
-          
-          <div className={styles.logo}>DevNetwork</div>
+            <div className={styles.logo}>
+            <img src="src/assets/novo_logo.png" alt="DevNetwork Logo" />
+            <span>DevNetwork</span>
+          </div>
 
           <nav className={styles.menu}>
             <a href="#projeto">Sobre o Projeto</a>
@@ -60,10 +62,11 @@ export default function LandingPage() {
           <p>
             Este projeto foi desenvolvido utilizando um conjunto de tecnologias
             modernas que garantem desempenho, organização e uma ótima
-            experiência para o usuário. 
-            
-            <p>A seguir, apresentamos as principais
-            ferramentas adotadas durante o desenvolvimento:{" "}</p>
+            experiência para o usuário.
+            <p>
+              A seguir, apresentamos as principais ferramentas adotadas durante
+              o desenvolvimento:{" "}
+            </p>
           </p>
 
           <p>

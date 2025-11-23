@@ -30,11 +30,20 @@
 /* Logo */
 .logo {
   background: linear-gradient(to right, #38bdf8, #c084fc);
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  font-size: 1.3rem;
+  font-size: 2rem;
   font-weight: 700;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 45px;
+  display: flex;
+  align-items: center;
 }
 
 /* Sessões + botão */
@@ -86,6 +95,10 @@ html {
   padding: 0 1rem;
 }
 
+.hero img {
+  width: 45px;
+}
+
 .tag {
   background: rgba(56, 189, 248, 0.15);
   color: #7dd3fc;
@@ -99,6 +112,7 @@ html {
   font-size: 3rem;
   font-weight: 700;
   background: linear-gradient(to right, #38bdf8, #c084fc);
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -190,6 +204,7 @@ html {
 .creators h2 {
   font-size: 2rem;
   background: linear-gradient(to right, #38bdf8, #c084fc);
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -230,6 +245,7 @@ html {
   display: inline-block;
   margin-top: 0.3rem;
   background: linear-gradient(to right, #38bdf8, #c084fc);
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   font-size: 0.9rem;

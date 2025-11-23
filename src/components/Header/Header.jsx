@@ -5,7 +5,7 @@ import { LuMessageSquarePlus } from "react-icons/lu";
 import { FaHome } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import logo from "../../assets/img_logo3.png";
+import logo from "../../assets/novo_logo.png";
 import ModalNovaPergunta from "../ModalNovaPergunta/ModalNovaPergunta";
 
 const Header = () => {

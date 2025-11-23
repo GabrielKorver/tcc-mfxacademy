@@ -37,7 +37,7 @@ const Login = () => {
       setTimeout(() => {
         window.location.href = "/home";
       }, 2000);
-    } catch  {
+    } catch {
       toast.error("Erro ao conectar com o servidor.");
     }
   };
@@ -45,7 +45,11 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <h1 className={styles.title}>DevNetwork</h1>
+        {/* <h1 className={styles.title}>DevNetwork</h1> */}
+        <div className={styles.logo}>
+          <img src="src/assets/novo_logo.png" alt="DevNetwork Logo" />
+          <span>DevNetwork</span>
+        </div>
 
         {/* EMAIL */}
         <label htmlFor="email">Email</label>

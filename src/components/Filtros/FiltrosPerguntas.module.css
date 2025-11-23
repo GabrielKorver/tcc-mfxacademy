@@ -1,14 +1,17 @@
 .container {
-  /* position: relative; */
-  /* top: 100px; */
+  position: relative; 
+  top: 25px;
   margin-top: 4rem;
   display: flex;
   justify-content: center;
+  text-align: center;
   width: 100%;
-  background-color: #e8eaf7;
   border-radius: 8px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 1rem;
+  background: radial-gradient(circle at top, #0f172a, #020617 70%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
 }
 
 .filtros {
@@ -16,7 +19,7 @@
   align-items: center;
   gap: 10px;
   padding: 10px;
-  background-color: #f8f9fa;
+  background: #FFFF;
   border-radius: 8px;
   width: 100%;
   /* max-width: 600px; */
@@ -27,8 +30,8 @@
   display: flex;
   align-items: center;
   flex: 1;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background: #FFFF;
+  border: 1px solid rgba(0, 0, 0, 0.4);;
   border-radius: 6px;
   padding: 5px 10px;
 }
@@ -48,13 +51,14 @@
 }
 
 select {
-  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.4);;
   border-radius: 6px;
   padding: 6px 10px;
   font-size: 14px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.06);;
   cursor: pointer;
   transition: border-color 0.2s ease;
+  
 }
 
 select:hover {
