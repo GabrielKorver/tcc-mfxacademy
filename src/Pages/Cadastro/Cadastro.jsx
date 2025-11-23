@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Style from "../cadastro/Cadastro.module.css";
+import { ToastContainer, toast } from "react-toastify";
 
 const avatars = [
   "https://avatar.iran.liara.run/public/27",
@@ -20,37 +21,51 @@ const Cadastro = () => {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [data, setData] = useState("");
-  const [bio, setBio] = useState("");
-  const [skills, setSkills] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [bio, setBio] = useState("");
+  const [habilidades, setHabilidades] = useState("");
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+  const criarUsuario = async () => {
+    const url = "http://127.0.0.1:3000/users/post";
+
+    const data = {
+      nome: nome,
+      email: email,
+      senha: senha,
+      avatar_url: avatar,
+      biografia: bio,
+      habilidades: habilidades,
+    };
 
     try {
-      const response = await fetch("http://localhost:3001/users", {
+      const response = await fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nome, email, senha, data, bio, skills, avatar }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
 
-      const dataRes = await response.json();
-      console.log("Resposta do servidor:", dataRes);
+      const resultado = await response.json();
 
-      if (response.ok) {
-        alert(dataRes.message);
-      } else {
-        alert("Erro: " + dataRes.error);
+      if (!response.ok) {
+        return toast.error(resultado.error || "Erro ao criar usuário!");
       }
+
+      toast.success(resultado.message);
+
+      setTimeout(() => {
+        window.location.href = "/Login";
+      }, 2000);
+
     } catch (error) {
-      console.error("Erro ao cadastrar:", error);
-      alert("Erro de conexão com o servidor.");
+      toast.error("Erro ao criar usuário.");
+      console.error("Erro ao criar usuário:", error);
     }
-  }
+  };
 
   return (
-    <form className={Style.container_cadastro} onSubmit={handleSubmit}>
+    <div className={Style.container_cadastro}>
       <h1>Cadastro</h1>
 
       <label htmlFor="nome">Nome</label>
@@ -80,32 +95,6 @@ const Cadastro = () => {
         onChange={(e) => setSenha(e.target.value)}
       />
 
-      <label htmlFor="data">Data de aniversário</label>
-      <input
-        type="date"
-        id="data"
-        value={data}
-        onChange={(e) => setData(e.target.value)}
-      />
-
-      <label htmlFor="bio">Biografia</label>
-      <input
-        type="text"
-        id="bio"
-        placeholder="Ex: Desenvolvedor full-stack a 05 anos"
-        value={bio}
-        onChange={(e) => setBio(e.target.value)}
-      />
-
-      <label htmlFor="skills">Skills</label>
-      <input
-        type="text"
-        id="skills"
-        placeholder="Digite suas skills ex: JavaScript | React | Node"
-        value={skills}
-        onChange={(e) => setSkills(e.target.value)}
-      />
-
       <h2>Escolha seu avatar</h2>
 
       <div className={Style.avatar_grid}>
@@ -114,9 +103,7 @@ const Cadastro = () => {
             key={index}
             src={url}
             alt={`Avatar ${index + 1}`}
-            className={`${Style.avatar} ${
-              avatar === url ? Style.avatar_selected : ""
-            }`}
+            className={`${Style.avatar} ${avatar === url ? Style.avatar_selected : ""}`}
             onClick={() => setAvatar(url)}
           />
         ))}
@@ -129,10 +116,30 @@ const Cadastro = () => {
         </p>
       )}
 
-      <button className={Style.btn_cadastro} type="submit">
+      <label htmlFor="bio">Biografia</label>
+      <input
+        type="text"
+        id="bio"
+        placeholder="Ex: Desenvolvedor full-stack há 5 anos"
+        value={bio}
+        onChange={(e) => setBio(e.target.value)}
+      />
+
+      <label htmlFor="skills">Habilidades</label>
+      <input
+        type="text"
+        id="skills"
+        placeholder="Ex: JavaScript, React, Node"
+        value={habilidades}
+        onChange={(e) => setHabilidades(e.target.value)}
+      />
+
+      <button onClick={criarUsuario} className={Style.btn_cadastro}>
         Cadastrar
       </button>
-    </form>
+
+      <ToastContainer position="top-right" autoClose={1500} theme="colored" />
+    </div>
   );
 };
 
