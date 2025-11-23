@@ -1,27 +1,47 @@
+import { useState } from "react";
 import styles from "../LandingPage/LandingPage.module.css";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
+import Slide from "../../components/Slider/Slider.jsx";
+import Slide2 from "../../components/Slider2/Slider2.jsx";
+import Carroussel from "../../components/Carroussel-tech/Carroussel.jsx";
 
 export default function LandingPage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  function toggleMenu() {
+    setMenuOpen(!menuOpen);
+  }
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.headerContainer}>
-            <div className={styles.logo}>
+
+          {/* LOGO */}
+          <div className={styles.logo}>
             <img src="src/assets/novo_logo.png" alt="DevNetwork Logo" />
             <span>DevNetwork</span>
           </div>
 
-          <nav className={styles.menu}>
-            <a href="#projeto">Sobre o Projeto</a>
-            <a href="#criadores">Sobre os Criadores</a>
-            <a href="/Login" className={styles.loginBtn}>
+          {/* BOTÃO HAMBÚRGUER */}
+          <button className={styles.hamburger} onClick={toggleMenu}>
+            {menuOpen ? <FaTimes size={25} /> : <FaBars size={25} />}
+          </button>
+
+          {/* MENU */}
+          <nav className={`${styles.menu} ${menuOpen ? styles.menuOpen : ""}`}>
+            <a onClick={toggleMenu} href="#projeto">Sobre o Projeto</a>
+            <a onClick={toggleMenu} href="#criadores">Sobre os Criadores</a>
+            <a onClick={toggleMenu} className={styles.mentoria} href="#mentoria">Mentoria</a>
+            <a onClick={toggleMenu} href="/Login" className={styles.loginBtn}>
               Ir para Login
             </a>
           </nav>
         </div>
       </header>
 
-      <section id="projeto" className={styles.hero}>
+
+      <section id="" className={styles.hero}>
         <h1>Bem-vindo ao Devnetwork</h1>
         <p>
           Uma plataforma criada por desenvolvedores iniciantes que buscam
@@ -55,55 +75,28 @@ export default function LandingPage() {
               reais no mundo da tecnologia.
             </p>
           </div>
+          <div className={styles.card}>
+            <span className={styles.icon}>✅</span>
+            <h3>Mentoria Particulas</h3>
+            <p>
+              Aprenda de forma personalizada e transforme conhecimento em oportunidades reais no mundo da tecnologia com uma mentoria individual focada no seu crescimento.
+            </p>
+          </div>
         </div>
+
+        <br /><br /><br />
+        <Slide />
+
+        <br /><br /><br /><br />
+        <h1 id="projeto" className={styles.hero}>Tecnologias Utilizadas no Projeto</h1>
 
         <div className={styles.tecnologias}>
-          <h2>Tecnologias Utilizadas no Projeto</h2>
-          <p>
-            Este projeto foi desenvolvido utilizando um conjunto de tecnologias
-            modernas que garantem desempenho, organização e uma ótima
-            experiência para o usuário.
-            <p>
-              A seguir, apresentamos as principais ferramentas adotadas durante
-              o desenvolvimento:{" "}
-            </p>
-          </p>
-
-          <p>
-            🌐 HTML5 Base da estrutura da aplicação, garantindo acessibilidade e
-            semântica.
-          </p>
-          <p>
-            📦 JavaScript (ES6+) Linguagem utilizada para toda a lógica da
-            aplicação, com recursos modernos como hooks, import/export e arrow
-            functions.
-          </p>
-
-          <p>
-            ⚛️ React.js Framework JavaScript responsável pela construção da
-            interface. Permite criar componentes reutilizáveis, garantindo
-            velocidade e modularidade.
-          </p>
-          <p>
-            🧩 Vite Ferramenta de build extremamente rápida que facilita o
-            desenvolvimento com React. Possui recarregamento instantâneo e uma
-            performance superior ao Create React App.
-            <p>
-              🎨 CSS Modules Utilizado para estilizar os componentes com
-              isolamento de escopo. Evita conflitos de classe e deixa o código
-              mais limpo e organizado.
-            </p>
-            <p>
-              🖼️ Lucide Icons Biblioteca de ícones leves, modernos e altamente
-              compatíveis com React. Usada para exibir ícones como Github,
-              Linkedin e Mail.
-            </p>
-            <p>
-              🧪 Node.js & npm Usados para gerenciar dependências e executar
-              ferramentas de desenvolvimento.
-            </p>
-          </p>
+          <Carroussel />
         </div>
+
+        <br /><br /><br />
+
+        <Slide2 />
 
         <div className={styles.missao}>
           <h2>Nossa Missão</h2>
@@ -136,8 +129,12 @@ export default function LandingPage() {
               soluções inovadoras.
             </p>
             <div className={styles.socials}>
-              <FaGithub size={20} />
-              <FaLinkedin size={20} />
+              <a href="https://github.com/GabrielKorver" target="_blank">
+                <FaGithub size={20} />
+              </a>
+              <a href="https://www.linkedin.com/in/gabriel-de-almeida-rodrigues-6a10a4103/" target="_blank">
+                <FaLinkedin size={20} />
+              </a>
               <FaEnvelope size={20} />
             </div>
           </div>
@@ -156,8 +153,12 @@ export default function LandingPage() {
               impactantes.
             </p>
             <div className={styles.socials}>
-              <FaGithub size={20} />
-              <FaLinkedin size={20} />
+              <a href="https://github.com/MayCenteno1" target="_blank">
+                <FaGithub size={20} />
+              </a>
+              <a href="https://www.linkedin.com/in/mayara-centeno-62b563269/" target="_blank">
+                <FaLinkedin size={20} />
+              </a>
               <FaEnvelope size={20} />
             </div>
           </div>

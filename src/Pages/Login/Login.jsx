@@ -52,8 +52,9 @@ const Login = () => {
         </div>
 
         {/* EMAIL */}
-        <label htmlFor="email">Email</label>
+        <label className={styles.label} htmlFor="email">Email</label>
         <input
+          className={styles.input}
           type="email"
           id="email"
           placeholder="Digite seu email"
@@ -61,9 +62,10 @@ const Login = () => {
         />
 
         {/* SENHA */}
-        <label htmlFor="senha">Senha</label>
+        <label className={styles.label} htmlFor="senha">Senha</label>
         <div className={styles.senhaWrapper}>
           <input
+            className={styles.input}
             type={mostrarSenha ? "text" : "password"}
             id="senha"
             placeholder="Digite sua senha"

@@ -1,0 +1,115 @@
+.carrousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    /* Limite o tamanho do carrossel */
+    margin: 0 auto;
+    border-radius: 12px;
+    background-color: #060C1D;
+    /* Cor de fundo escura, similar à imagem */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    /* Espaçamento interno para afastar o conteúdo das bordas */
+}
+
+/* Faixa que contém todos os slides */
+.faixa {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Slide individual */
+.slide {
+    flex-shrink: 0;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Card dentro do slide */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* 1. Ajuste para a imagem ficar grande */
+.cardImg {
+    width: 100px;
+    /* Tamanho fixo para o ícone, ajuste conforme necessário */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 1em;
+    line-height: 1.6;
+    max-width: 80%;
+    /* Limita a largura do texto para melhor leitura */
+    margin: 0 auto 60px auto;
+    /* Aumenta a margem inferior para afastar dos indicadores/controles */
+}
+
+.controle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #ffffff;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    transition: background 0.3s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+}
+
+.controle:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.esquerda {
+    left: 10px;
+}
+
+.direita {
+    right: 10px;
+}
+
+.indicadores {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.indicador {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.indicador.ativo {
+    background-color: #ffffff;
+    transform: scale(1.2);
+}

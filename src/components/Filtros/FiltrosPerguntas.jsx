@@ -4,7 +4,9 @@ import { FiSearch } from "react-icons/fi";
 function FiltrosPerguntas() {
   return (
     <div className={styles.container}>
+
       <div className={styles.filtros}>
+
         <div className={styles.inputContainer}>
           <FiSearch className={styles.icon} />
           <input type="text" placeholder="Buscar perguntas..." />
@@ -17,7 +19,9 @@ function FiltrosPerguntas() {
           <option value="css">CSS</option>
           <option value="html">HTML</option>
         </select>
+
       </div>
+
     </div>
   );
 }

@@ -149,7 +149,7 @@ const ModalPerfil = ({ onClose, usuario }) => {
         draggable
         pauseOnHover
         theme="colored"
-        style={{ marginTop: 50 }}
+        style={{ marginTop: 75 }}
       />
     </div>
   );

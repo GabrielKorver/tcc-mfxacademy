@@ -34,12 +34,12 @@
 .logo {
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   gap: 10px;
-  font-size: 28px; 
+  font-size: 28px;
   font-weight: 700;
-  margin-bottom: 20px; 
-   background: linear-gradient(to right, #38bdf8, #c084fc);
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #38bdf8, #c084fc);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -47,29 +47,29 @@
 }
 
 .logo img {
-  width: 40px; 
+  width: 40px;
   height: 32px;
   object-fit: contain;
 }
 
 
 /* === LABELS === */
-label {
+.label {
   display: block;
   text-align: left;
   font-size: 0.9rem;
-  color: #bcd0e8;
+  color: #ffffff;
   margin-bottom: 0.4rem;
 }
 
 /* === INPUT PADRÃO === */
-input {
+.input {
   width: 100%;
   padding: 0.9rem;
   border-radius: 12px;
   border: none;
   background: rgba(255, 255, 255, 0.12);
-  color: #fff;
+  color: #ffffff;
   font-size: 0.95rem;
   margin-bottom: 1.2rem;
   transition: 0.3s;
@@ -103,6 +103,7 @@ input:focus {
   text-align: left;
   margin-top: -0.5rem;
   color: #7cc7ff;
+  text-decoration: none;
 }
 
 .linkLeft:hover {
@@ -137,6 +138,7 @@ input:focus {
 
 .options a {
   color: #7cc7ff;
+  text-decoration: none;
 }
 
 .options a:hover {

@@ -1,0 +1,42 @@
+.slider {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: #0A1022;
+  padding: 20px 0;
+  border: none;
+  border-radius: 50%;
+}
+
+.slider-track {
+  display: flex;
+  gap: 150px;
+  animation: scroll 25s linear infinite;
+}
+
+.slide img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px #00d9ff);
+}
+
+/* ANIMAÇÃO INFINITA */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* DUPLICAÇÃO AUTOMÁTICA */
+.slider-track::after {
+  content: "";
+  display: flex;
+  gap: 50px;
+  animation: none;
+}

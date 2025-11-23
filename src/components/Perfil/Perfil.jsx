@@ -72,14 +72,14 @@ const Perfil = () => {
 
       <div className={Style.bio}>
         <p>
-          <strong>Bio:</strong>
+          <strong>Bio</strong>
         </p>
         <span>{usuario.biografia}</span>
       </div>
 
-      <div className={Style.habilidades}>
+      <div className={Style.tecnologias}>
         <p>
-          <strong>Habilidades:</strong>
+          <strong>Habilidades</strong>
         </p>
         <div className={Style.tecnologias_dev}>
           <span>{usuario.habilidades}</span>

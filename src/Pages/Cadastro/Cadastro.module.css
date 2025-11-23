@@ -1,4 +1,9 @@
 /* ===================== CONTAINER DO CARD ===================== */
+html,
+body {
+  background-color: #0C1525;
+}
+
 .container_cadastro {
   display: flex;
   flex-direction: column;
@@ -8,7 +13,7 @@
   max-width: 95%;
   margin: 2rem auto;
   padding: 2.5rem;
-  background: rgba(255, 255, 255, 0.06);
+  background: #192331;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 22px;
 }
@@ -44,6 +49,7 @@
   font-size: 0.95rem;
   margin-bottom: 1.2rem;
   transition: 0.3s;
+  color: #fff;
 }
 
 /* ===================== AVATARES ===================== */
@@ -80,7 +86,7 @@
   align-items: center;
   gap: 10px;
   font-size: 0.95rem;
-  color: #333;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
