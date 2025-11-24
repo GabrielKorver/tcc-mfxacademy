@@ -1,6 +1,12 @@
 import { useState } from "react";
 import styles from "../LandingPage/LandingPage.module.css";
-import { FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
 import Slide from "../../components/Slider/Slider.jsx";
 import Slide2 from "../../components/Slider2/Slider2.jsx";
 import Carroussel from "../../components/Carroussel-tech/Carroussel.jsx";
@@ -16,7 +22,6 @@ export default function LandingPage() {
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.headerContainer}>
-
           {/* LOGO */}
           <div className={styles.logo}>
             <img src="src/assets/novo_logo.png" alt="DevNetwork Logo" />
@@ -30,16 +35,25 @@ export default function LandingPage() {
 
           {/* MENU */}
           <nav className={`${styles.menu} ${menuOpen ? styles.menuOpen : ""}`}>
-            <a onClick={toggleMenu} href="#projeto">Sobre o Projeto</a>
-            <a onClick={toggleMenu} href="#criadores">Sobre os Criadores</a>
-            <a onClick={toggleMenu} className={styles.mentoria} href="#mentoria">Mentoria</a>
+            <a onClick={toggleMenu} href="#projeto">
+              Sobre o Projeto
+            </a>
+            <a onClick={toggleMenu} href="#criadores">
+              Sobre os Criadores
+            </a>
+            <a
+              onClick={toggleMenu}
+              className={styles.mentoria}
+              href="/mentoria"
+            >
+              Mentoria
+            </a>
             <a onClick={toggleMenu} href="/Login" className={styles.loginBtn}>
               Ir para Login
             </a>
           </nav>
         </div>
       </header>
-
 
       <section id="" className={styles.hero}>
         <h1>Bem-vindo ao Devnetwork</h1>
@@ -79,22 +93,33 @@ export default function LandingPage() {
             <span className={styles.icon}>✅</span>
             <h3>Mentoria Particulas</h3>
             <p>
-              Aprenda de forma personalizada e transforme conhecimento em oportunidades reais no mundo da tecnologia com uma mentoria individual focada no seu crescimento.
+              Aprenda de forma personalizada e transforme conhecimento em
+              oportunidades reais no mundo da tecnologia com uma mentoria
+              individual focada no seu crescimento.
             </p>
           </div>
         </div>
 
-        <br /><br /><br />
+        <br />
+        <br />
+        <br />
         <Slide />
 
-        <br /><br /><br /><br />
-        <h1 id="projeto" className={styles.hero}>Tecnologias Utilizadas no Projeto</h1>
+        <br />
+        <br />
+        <br />
+        <br />
+        <h1 id="projeto" className={styles.hero}>
+          Tecnologias Utilizadas no Projeto
+        </h1>
 
         <div className={styles.tecnologias}>
           <Carroussel />
         </div>
 
-        <br /><br /><br />
+        <br />
+        <br />
+        <br />
 
         <Slide2 />
 
@@ -132,7 +157,10 @@ export default function LandingPage() {
               <a href="https://github.com/GabrielKorver" target="_blank">
                 <FaGithub size={20} />
               </a>
-              <a href="https://www.linkedin.com/in/gabriel-de-almeida-rodrigues-6a10a4103/" target="_blank">
+              <a
+                href="https://www.linkedin.com/in/gabriel-de-almeida-rodrigues-6a10a4103/"
+                target="_blank"
+              >
                 <FaLinkedin size={20} />
               </a>
               <FaEnvelope size={20} />
@@ -156,7 +184,10 @@ export default function LandingPage() {
               <a href="https://github.com/MayCenteno1" target="_blank">
                 <FaGithub size={20} />
               </a>
-              <a href="https://www.linkedin.com/in/mayara-centeno-62b563269/" target="_blank">
+              <a
+                href="https://www.linkedin.com/in/mayara-centeno-62b563269/"
+                target="_blank"
+              >
                 <FaLinkedin size={20} />
               </a>
               <FaEnvelope size={20} />
