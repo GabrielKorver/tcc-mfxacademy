@@ -3,16 +3,22 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import LandindPage from "./Pages/LandingPage/LandingPage"
+import LandindPage from "./Pages/LandingPage/LandingPage";
 import Login from "./Pages/Login/Login";
 import Home from "./Pages/Home/Home";
 import Cadastro from "./Pages/Cadastro/Cadastro";
 import Recuperar from "./Pages/Recuperar/Recuperar";
+import Layout from "./components/Layout/Layout";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Usuarios from "./pages/Usuarios/Usuarios";
+import Perguntas from "./pages/Perguntas/Perguntas";
+import Mentorias from "./pages/Mentorias/Mentorias";
+import Assuntos from "./pages/Assuntos/Assuntos";
 
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <LandindPage />
+    element: <LandindPage />,
   },
   {
     path: "/Login",
@@ -29,6 +35,36 @@ const routes = createBrowserRouter([
   {
     path: "/Recuperar",
     element: <Recuperar />,
+  },
+  {
+    path: "/painel",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+      {
+        path: "dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "usuarios",
+        element: <Usuarios />,
+      },
+      {
+        path: "perguntas",
+        element: <Perguntas />,
+      },
+      {
+        path: "mentorias",
+        element: <Mentorias />,
+      },
+      {
+        path: "assuntos",
+        element: <Assuntos />,
+      },
+    ],
   },
 ]);
 
