@@ -19,7 +19,7 @@ const navItems = [
 export default function Aside() {
   return (
     <aside className={styles.aside}>
-      <div className={styles.logo}>Admin Panel</div>
+      <div className={styles.logo}>Painel DevNetwork</div>
       <nav>
         <ul className={styles.navList}>
           {navItems.map((item) => (
