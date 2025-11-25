@@ -1,14 +1,10 @@
-/* ===========================
-   CONTAINER GERAL
-=========================== */
+/*  CONTAINER GERAL */
 .container {
   width: 100%;
   min-height: 100vh;
   padding: 40px 20px;
   display: flex;
   justify-content: center;
-
-  /* 🔥 mesmo fundo da landing */
   background: radial-gradient(circle at top, #0f172a, #020617 70%);
   color: #fff;
 }
@@ -18,15 +14,60 @@
   width: 100%;
 }
 
-/* ===========================
-   TÍTULOS
-=========================== */
+/* Header geral */
+.header {
+  background: #0d1321;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Container interno com limite */
+.headerContainer {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  background: linear-gradient(to right, #38bdf8, #c084fc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 2rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 45px;
+  display: flex;
+  align-items: center;
+}
+
+.inicioBtn {
+  background: linear-gradient(to right, #38bdf8, #c084fc);
+  border: none;
+  padding: 0.7rem 1.3rem;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+  text-decoration: none;
+}
+
+/* TÍTULOS */
 .title {
   text-align: center;
   font-size: 2.3rem;
   margin-bottom: 10px;
-
-  /* 🔥 gradiente igual ao hero */
   background: linear-gradient(to right, #38bdf8, #c084fc);
   background-clip: text;
   -webkit-background-clip: text;
@@ -40,23 +81,20 @@
   opacity: 0.85;
 }
 
-/* ===========================
-   CARDS DOS TEMAS
-=========================== */
+/* CARDS DOS TEMAS */
 .cardsArea {
-  display: grid;
+  display: flex;
+  align-items: center;    
+  text-align: center;    
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
   margin-bottom: 40px;
-}
+  }
 
 .card {
   padding: 25px;
-
-  /* 🔥 mesma transparência dos cards da landing */
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
-
   border-radius: 14px;
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -65,8 +103,6 @@
 
 .card:hover {
   transform: translateY(-4px);
-
-  /* 🔥 hover idêntico aos cards da landing */
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.12);
 }
@@ -74,9 +110,10 @@
 .card h2 {
   margin-bottom: 10px;
   font-size: 1.3rem;
-
-  /* 🔥 destaque suave */
-  color: #e2e8f0;
+  Background: linear-gradient(to right, #38bdf8, #c084fc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .card p {
@@ -85,18 +122,61 @@
   color: #cbd5e1;
 }
 
-/* ===========================
-   FORMULÁRIO DE AGENDAMENTO
-=========================== */
+/* FORMULÁRIO DE AGENDAMENTO*/
 .formArea {
   margin-top: 40px;
-  padding: 30px;
+  padding: 40px 30px;
 
-  /* 🔥 mesma base dos blocos "missão", "tecnologias", "criadores" */
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
 
-  border-radius: 18px;
+  border-radius: 12px; 
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+
+  max-width: 500px;  
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.formArea h2 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  Background: linear-gradient(to right, #38bdf8, #c084fc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+  }
+
+  .form label {
+  align-self: flex-start;
+  margin-top: 0.8rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  color: #ffff;
+}
+
+.form input {
+  width: 200%;
+  padding: 0.9rem;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+  transition: 0.3s;
+  color: #fff;
+}
+
+.formArea agendarBtn {
+  margin-top: 1rem;
+  background: linear-gradient(to right, #38bdf8, #c084fc);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
 }

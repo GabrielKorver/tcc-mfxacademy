@@ -3,7 +3,7 @@ import styles from "../LandingPage/LandingPage.module.css";
 import {
   FaGithub,
   FaLinkedin,
-  FaEnvelope,
+  FaWhatsapp,
   FaBars,
   FaTimes,
 } from "react-icons/fa";
@@ -163,7 +163,9 @@ export default function LandingPage() {
               >
                 <FaLinkedin size={20} />
               </a>
-              <FaEnvelope size={20} />
+              <a href="https://wa.me/5511951594482?text=Ola%2C+meu+contato+é+através+do+DevNetwork" target="blank">
+                <FaWhatsapp size={20} />
+              </a>
             </div>
           </div>
 
@@ -190,7 +192,9 @@ export default function LandingPage() {
               >
                 <FaLinkedin size={20} />
               </a>
-              <FaEnvelope size={20} />
+              <a href="https://wa.me/5511940355834?text=Ola%2C+meu+contato+é+através+do+DevNetwork" target="blank">
+                <FaWhatsapp size={20} />
+              </a>
             </div>
           </div>
         </div>
@@ -200,7 +204,10 @@ export default function LandingPage() {
             Sempre buscamos desafios e oportunidades de aprendizado. Entre em
             contato se quiser colaborar!
           </p>
+          <a href="mailto:devnetwork.adm@gmail.com?subject=Contato">
           <button>Entrar em Contato</button>
+          </a>
+          
         </div>
       </section>
 
