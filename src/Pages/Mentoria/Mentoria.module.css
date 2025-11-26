@@ -84,12 +84,13 @@
 /* CARDS DOS TEMAS */
 .cardsArea {
   display: flex;
-  align-items: center;    
-  text-align: center;    
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+  justify-content: center;
+  align-items: stretch;
+  text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 45px;
   margin-bottom: 40px;
-  }
+}
 
 .card {
   padding: 25px;
@@ -107,10 +108,17 @@
   border-color: rgba(255, 255, 255, 0.12);
 }
 
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 15px;
+}
+
 .card h2 {
   margin-bottom: 10px;
   font-size: 1.3rem;
-  Background: linear-gradient(to right, #38bdf8, #c084fc);
+  background: linear-gradient(to right, #38bdf8, #c084fc);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -130,27 +138,60 @@
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
 
-  border-radius: 12px; 
+  border-radius: 12px;
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 
-  max-width: 500px;  
+  max-width: 500px;
   width: 80%;
   margin-left: auto;
-  margin-right: auto; 
+  margin-right: auto;
 }
 
 .formArea h2 {
   margin-bottom: 10px;
   font-size: 1.3rem;
-  Background: linear-gradient(to right, #38bdf8, #c084fc);
+  background: linear-gradient(to right, #38bdf8, #c084fc);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   text-align: center;
-  }
+}
 
-  .form label {
+.p {
+  opacity: 0.85;
+  line-height: 1.4rem;
+  color: #cbd5e1;
+  text-align: center;
+}
+
+.duracao {
+  opacity: 0.85;
+  line-height: 1.4rem;
+  color: #cbd5e1;
+  text-align: center;
+}
+
+.precoDe {
+  font-size: 1.5em;
+}
+
+.precoPor {
+  font-size: 1.5em;
+}
+
+.precoAtual {
+  font-size: 2.5em;
+  background: linear-gradient(to right, #38bdf8, #c084fc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+
+.form label {
   align-self: flex-start;
   margin-top: 0.8rem;
   margin-bottom: 0.3rem;
@@ -170,13 +211,16 @@
   color: #fff;
 }
 
-.formArea agendarBtn {
-  margin-top: 1rem;
+.agendarBtn {
   background: linear-gradient(to right, #38bdf8, #c084fc);
   border: none;
-  padding: 1rem 2rem;
-  border-radius: 15px;
+  padding: 0.7rem 1.3rem;
+  border-radius: 10px;
   color: #fff;
   cursor: pointer;
   transition: 0.2s;
+}
+
+.agendarBtn:hover {
+  background: #0090d1;
 }

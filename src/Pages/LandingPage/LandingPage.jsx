@@ -91,7 +91,7 @@ export default function LandingPage() {
           </div>
           <div className={styles.card}>
             <span className={styles.icon}>✅</span>
-            <h3>Mentoria Particulas</h3>
+            <h3>Mentoria Particulares</h3>
             <p>
               Aprenda de forma personalizada e transforme conhecimento em
               oportunidades reais no mundo da tecnologia com uma mentoria
