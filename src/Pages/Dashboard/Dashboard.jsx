@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import styles from "./Dashboard.module.css";
 import GraficoUsuario from "../../components/GraficoUsuario/GraficoUsuario.jsx";
+import GraficoPerguntas from "../../components/GraficoPergunta/GraficoPergunta.jsx"
+import GraficoAgendamentos from "../../components/GraficoAgendamentos/GraficoAgendamentos.jsx"
 
 export default function Dashboard() {
   const [totalUsuarios, setTotalUsuarios] = useState(0);
+  const [totalPerguntas, setTotalPerguntas] = useState(0);
+  const [totalAgendamentos, setTotalAgendamentos] = useState(0);
 
   const getUsuario = async () => {
     try {
@@ -11,7 +15,7 @@ export default function Dashboard() {
       const response = await fetch(url);
       const data = await response.json();
 
-      setTotalUsuarios(data.length); // <-- AQUI pega o total certinho
+      setTotalUsuarios(data.length);
     } catch (error) {
       console.log("Erro ao buscar usuários:", error);
     }
@@ -19,6 +23,38 @@ export default function Dashboard() {
 
   useEffect(() => {
     getUsuario();
+  }, []);
+
+  const getPerguntas = async () => {
+    try {
+      const url = "http://127.0.0.1:3000/perguntas/get";
+      const response = await fetch(url);
+      const data = await response.json();
+
+      setTotalPerguntas(data.length);
+    } catch (error) {
+      console.log("Erro ao buscar usuários:", error);
+    }
+  };
+
+  useEffect(() => {
+    getPerguntas();
+  }, []);
+
+  const getAgendamentos = async () => {
+    try {
+      const url = "http://127.0.0.1:3000/agendamentos/get";
+      const response = await fetch(url);
+      const data = await response.json();
+
+      setTotalAgendamentos(data.length);
+    } catch (error) {
+      console.log("Erro ao buscar agendamentos:", error);
+    }
+  };
+
+  useEffect(() => {
+    getAgendamentos();
   }, []);
 
   return (
@@ -43,12 +79,12 @@ export default function Dashboard() {
           <div className={styles.graficoInfo}>
             <p>Gráfico de Perguntas</p>
             <p>
-              Total: <strong>{totalUsuarios}</strong>
+              Total: <strong>{totalPerguntas}</strong>
             </p>
           </div>
 
           <div className={styles.graficoBox}>
-            <GraficoUsuario />
+            <GraficoPerguntas />
           </div>
         </div>
 
@@ -56,12 +92,12 @@ export default function Dashboard() {
           <div className={styles.graficoInfo}>
             <p>Gráfico de Agendamentos</p>
             <p>
-              Total: <strong>{totalUsuarios}</strong>
+              Total: <strong>{totalAgendamentos}</strong>
             </p>
           </div>
 
           <div className={styles.graficoBox}>
-            <GraficoUsuario />
+            <GraficoAgendamentos />
           </div>
         </div>
       </div>
