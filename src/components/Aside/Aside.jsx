@@ -13,7 +13,7 @@ const navItems = [
   { to: "usuarios", label: "Usuários", icon: <FaUsers /> },
   { to: "perguntas", label: "Perguntas", icon: <FaQuestion /> },
   { to: "mentorias", label: "Mentorias", icon: <FaChalkboardTeacher /> },
-  { to: "assuntos", label: "Assuntos", icon: <FaList /> },
+  // { to: "assuntos", label: "Assuntos", icon: <FaList /> },
 ];
 
 export default function Aside() {
