@@ -103,21 +103,24 @@ export default function Mentoria() {
             <form className={styles.form}>
               <label>
                 Nome:
+                <br /> <br />
                 <input type="text" placeholder="Seu nome" required />
               </label>
 
               <label>
                 Telefone:
+                <br /> <br />
                 <input type="tel" placeholder="(00) 00000-0000" required />
               </label>
 
               <label>
                 Data de Agendamento:
+                <br /> <br />
                 <input type="datetime-local" required />
               </label>
 
               <label>
-                Tema escolhido:
+                Tema escolhido:   
                 <select required>
                   <option value="">Selecione um tema</option>
                   {mentores.map((tema, index) => (
