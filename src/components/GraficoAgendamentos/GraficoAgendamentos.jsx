@@ -58,7 +58,7 @@ export default function GraficoUsuario() {
     datasets: [
       {
         type: "bar",
-        label: "   por mês",
+        label: "Agendamentos por mês",
         data: agendamentosPorMes.map((item) => item.total),
         backgroundColor: "rgba(75, 192, 192, 0.5)",
         borderColor: "rgba(75, 192, 192, 1)",
