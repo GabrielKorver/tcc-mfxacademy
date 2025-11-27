@@ -1,4 +1,5 @@
 import styles from "./Mentoria.module.css";
+import { RiArrowGoBackFill } from "react-icons/ri";
 import frontendImg from "../../assets/img_frontend_card.png";
 import backendImg from "../../assets/img_backend_card.png";
 import fullstackImg from "../../assets/img_fullstack_card.png";
@@ -43,7 +44,12 @@ export default function Mentoria() {
           </div>
 
           <a href="/" className={styles.inicioBtn}>
-            Voltar para o início
+            <RiArrowGoBackFill />
+            Voltar
+          </a>
+
+          <a href="/" className={styles.inicioBtn2}>
+            <RiArrowGoBackFill />
           </a>
         </div>
       </header>
@@ -82,13 +88,15 @@ export default function Mentoria() {
 
             <details className={styles.precoDetails}>
               <summary className={styles.saibaMaisBtn}>Saiba Mais</summary>
-              <br /><br />
+              <br />
+              <br />
 
               <div className={styles.precoInfo}>
                 <p className={styles.precoDe}>
                   De: <del>R$ 280,00</del>
                 </p>
-                <br /><br />
+                <br />
+                <br />
                 <p className={styles.precoPor}>Por:</p>
                 <h1 className={styles.precoAtual}>R$ 79,90</h1>
                 <br />
@@ -100,41 +108,45 @@ export default function Mentoria() {
 
             <br />
 
-            <form className={styles.form}>
-              <label>
-                Nome:
-                <br /> <br />
-                <input type="text" placeholder="Seu nome" required />
-              </label>
+            <div className={styles.form}>
+              <label>Nome:</label>
+              <input type="text" placeholder="Seu nome" required />
 
-              <label>
-                Telefone:
-                <br /> <br />
-                <input type="tel" placeholder="(00) 00000-0000" required />
-              </label>
+              <label>Telefone:</label>
+              <input type="tel" placeholder="(00) 00000-0000" required />
 
-              <label>
-                Data de Agendamento:
-                <br /> <br />
-                <input type="datetime-local" required />
-              </label>
+              <label>Data de Agendamento:</label>
+              <select required>
+                <option value="">Selecione...</option>
+                <option value="2025-12-05">05/12/2025</option>
+                <option value="2025-12-10">10/12/2025</option>
+                <option value="2025-12-20">20/12/2025</option>
+              </select>
 
-              <label>
-                Tema escolhido:   
-                <select required>
-                  <option value="">Selecione um tema</option>
-                  {mentores.map((tema, index) => (
-                    <option key={index} value={tema.tema}>
-                      {tema.tema}
-                    </option>
-                  ))}
-                </select>
-              </label>
+              <label>Horário:</label>
+              <select required>
+                <option value="">Selecione...</option>
+                <option value="14:00">14:00</option>
+                <option value="16:00">16:00</option>
+                <option value="18:00">18:00</option>
+              </select>
 
-              <button type="submit" className={styles.agendarBtn}>
+              <label>Tema escolhido:</label>
+              <select required>
+                <option value="" disabled selected hidden>
+                  Selecione um tema
+                </option>
+                {mentores.map((tema, index) => (
+                  <option key={index} value={tema.tema}>
+                    {tema.tema}
+                  </option>
+                ))}
+              </select>
+
+              <button className={styles.agendarBtn}>
                 Confirmar Agendamento
               </button>
-            </form>
+            </div>
           </div>
         </section>
       </div>
