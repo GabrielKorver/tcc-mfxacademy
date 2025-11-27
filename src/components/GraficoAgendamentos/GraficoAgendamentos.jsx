@@ -22,12 +22,12 @@ ChartJS.register(
 );
 
 export default function GraficoUsuario() {
-  const [usuariosPorMes, setUsuariosPorMes] = useState([]);
+  const [agendamentosPorMes, setagendamentosPorMes] = useState([]);
 
   useEffect(() => {
     const pegarInfosAPI = async () => {
       try {
-        const respostaFetch = await fetch("http://127.0.0.1:3000/users/get");
+        const respostaFetch = await fetch("http://127.0.0.1:3000/agendamentos/get");
         const usuarios = await respostaFetch.json();
 
         const meses = Array(12).fill(0);
@@ -43,7 +43,7 @@ export default function GraficoUsuario() {
           total,
         }));
 
-        setUsuariosPorMes(resultado);
+        setagendamentosPorMes(resultado);
       } catch (error) {
         console.log("Erro ao buscar API", error);
       }
@@ -53,13 +53,13 @@ export default function GraficoUsuario() {
   }, []);
 
   const data = {
-    labels: usuariosPorMes.map((item) => item.mes),
+    labels: agendamentosPorMes.map((item) => item.mes),
 
     datasets: [
       {
         type: "bar",
-        label: "Usuários por mês (barras)",
-        data: usuariosPorMes.map((item) => item.total),
+        label: "   por mês",
+        data: agendamentosPorMes.map((item) => item.total),
         backgroundColor: "rgba(75, 192, 192, 0.5)",
         borderColor: "rgba(75, 192, 192, 1)",
         borderWidth: 1,
@@ -67,7 +67,7 @@ export default function GraficoUsuario() {
       {
         type: "line",
         label: "Tendência (linha)",
-        data: usuariosPorMes.map((item) => item.total),
+        data: agendamentosPorMes.map((item) => item.total),
         borderColor: "#4B8AF0",
         backgroundColor: "#4B8AF0",
         borderWidth: 2,

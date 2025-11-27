@@ -20,12 +20,12 @@ ChartJS.register(
 );
 
 const GraficoUsuario = () => {
-  const [usuariosPorMes, setUsuariosPorMes] = useState([]);
+  const [perguntasPorMes, setUsuariosPorMes] = useState([]);
 
   useEffect(() => {
     const pegarInfosAPI = async () => {
       try {
-        const respostaFetch = await fetch("http://127.0.0.1:3000/users/get");
+        const respostaFetch = await fetch("http://127.0.0.1:3000/perguntas/get");
         const usuarios = await respostaFetch.json();
 
         const meses = Array(12).fill(0);
@@ -51,11 +51,11 @@ const GraficoUsuario = () => {
   }, []);
 
   const data = {
-    labels: usuariosPorMes.map((item) => item.mes),
+    labels: perguntasPorMes.map((item) => item.mes),
     datasets: [
       {
-        label: "Usuários cadastrados por mês",
-        data: usuariosPorMes.map((item) => item.total),
+        label: "perguntas realizadas no mês",
+        data: perguntasPorMes.map((item) => item.total),
         borderColor: "rgba(75, 192, 192, 1)",
         backgroundColor: "rgba(75, 192, 192, 0.4)",
         borderWidth: 3,

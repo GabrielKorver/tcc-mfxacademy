@@ -10,11 +10,11 @@ import Cadastro from "./Pages/Cadastro/Cadastro";
 import Recuperar from "./Pages/Recuperar/Recuperar";
 import Mentoria from "./Pages/Mentoria/Mentoria";
 import Layout from "./components/Layout/Layout";
-import Dashboard from "./pages/Dashboard/Dashboard";
-import Usuarios from "./pages/Usuarios/Usuarios";
-import Perguntas from "./pages/Perguntas/Perguntas";
-import Mentorias from "./pages/Mentorias/Mentorias";
-import Assuntos from "./pages/Assuntos/Assuntos";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import Usuarios from "./Pages/Usuarios/Usuarios";
+import Perguntas from "./Pages/Perguntas/Perguntas";
+import Mentorias from "./Pages/Mentorias/Mentorias";
+import Assuntos from "./Pages/Assuntos/Assuntos";
 
 const routes = createBrowserRouter([
   {
