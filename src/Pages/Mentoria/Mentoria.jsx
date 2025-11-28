@@ -4,8 +4,139 @@ import frontendImg from "../../assets/img_frontend_card.png";
 import backendImg from "../../assets/img_backend_card.png";
 import fullstackImg from "../../assets/img_fullstack_card.png";
 import carreirasImg from "../../assets/img_carreiras_card.png";
+import { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { ToastContainer, toast } from "react-toastify";
+
 
 export default function Mentoria() {
+  const [datasPermitidas, setDatasPermitidas] = useState([]);
+  const [horasPermitidas, setHorasPermitidas] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [mentoria, setMentoria] = useState([]);
+  const [mentoriaSelecionado, setMentoriaSelecionado] = useState("");
+  const [nome, setNome] = useState("");
+  const [telefone, setTelefone] = useState("");
+
+  // Buscar datas
+  const getDate = async () => {
+    try {
+      const url = `http://127.0.0.1:3000/data/get`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      const datasConvertidas = data.map(item => new Date(item.agenda_data));
+      setDatasPermitidas(datasConvertidas);
+    } catch {
+      toast.error("Erro ao buscar datas");
+    }
+  };
+
+  useEffect(() => {
+    getDate();
+  }, []);
+
+  // Buscar horas
+  const getHora = async () => {
+    try {
+      const url = `http://127.0.0.1:3000/hora/get`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      const horasConvertidas = data.map(item => {
+        const partes = item.agenda_hora.split(":");
+        const date = new Date();
+        date.setHours(parseInt(partes[0]));
+        date.setMinutes(parseInt(partes[1]));
+        date.setSeconds(0);
+        date.setMilliseconds(0);
+        return date;
+      });
+
+      setHorasPermitidas(horasConvertidas);
+    } catch {
+      toast.error("Erro ao buscar horas");
+    }
+  };
+
+  useEffect(() => {
+    getHora();
+  }, []);
+
+  const getMentoria = async () => {
+    try {
+      const url = "http://127.0.0.1:3000/mentoria/get";
+      const response = await fetch(url);
+      const data = await response.json();
+      setMentoria(data);
+    } catch {
+      toast.error("Erro ao buscar mentorias");
+    }
+  };
+
+  useEffect(() => {
+    getMentoria();
+  }, []);
+
+
+  const criarAgendamento = async () => {
+    try {
+      if (!nome || !telefone || !selectedDate || !mentoriaSelecionado) {
+        return toast.error("Preencha todos os campos!");
+      }
+
+      const dataBloqueada = new Date(2025, 10, 28, 0, 0, 0); // Meses começam em 0 → 10 = novembro
+      if (
+        selectedDate.getFullYear() === dataBloqueada.getFullYear() &&
+        selectedDate.getMonth() === dataBloqueada.getMonth() &&
+        selectedDate.getDate() === dataBloqueada.getDate() &&
+        selectedDate.getHours() === dataBloqueada.getHours() &&
+        selectedDate.getMinutes() === dataBloqueada.getMinutes()
+      ) {
+        return toast.error("Esta data/hora não pode ser agendada!");
+      }
+
+      const dataFormatada = selectedDate
+        .toISOString()
+        .slice(0, 19)
+        .replace("T", " ");
+
+      const agendamento = {
+        nome,
+        telefone,
+        data_agendamento: dataFormatada,
+        mentoria_id: mentoriaSelecionado,
+      };
+
+      const URL = "http://127.0.0.1:3000/agendamentos/post";
+
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(agendamento),
+      });
+
+      const data = await response.json(); // backend SEMPRE envia message
+
+      if (!response.ok) {
+        toast.error(data.message || "Erro ao criar agendamento.");
+        return;
+      }
+
+      toast.success(data.message || "Agendamento criado com sucesso!");
+
+      setTimeout(() => {
+        window.location.href = "/Login";
+      }, 2000);
+
+    } catch (error) {
+      console.error("Erro de conexão:", error);
+      toast.error("Erro ao conectar com o servidor.");
+    }
+  };
+
+
   const mentores = [
     {
       tema: "Frontend",
@@ -66,7 +197,6 @@ export default function Mentoria() {
           <div className={styles.cardsArea}>
             {mentores.map((item, index) => (
               <div key={index} className={styles.card}>
-                {/* NOVO: Adicionando a imagem ao card */}
                 <img
                   src={item.imagem}
                   alt={`Ilustração para o tema ${item.tema}`}
@@ -110,45 +240,60 @@ export default function Mentoria() {
 
             <div className={styles.form}>
               <label>Nome:</label>
-              <input type="text" placeholder="Seu nome" required />
+              <input onChange={(e) => setNome(e.target.value)} type="text" placeholder="Seu nome" required />
 
               <label>Telefone:</label>
-              <input type="tel" placeholder="(00) 00000-0000" required />
+              <input onChange={(e) => setTelefone(e.target.value)} type="tel" placeholder="(00) 00000-0000" required />
 
-              <label>Data de Agendamento:</label>
-              <select required>
-                <option value="">Selecione...</option>
-                <option value="2025-12-05">05/12/2025</option>
-                <option value="2025-12-10">10/12/2025</option>
-                <option value="2025-12-20">20/12/2025</option>
-              </select>
+              <label>Data e hora:</label>
 
-              <label>Horário:</label>
-              <select required>
-                <option value="">Selecione...</option>
-                <option value="14:00">14:00</option>
-                <option value="16:00">16:00</option>
-                <option value="18:00">18:00</option>
-              </select>
+              <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                includeDates={datasPermitidas}
+                includeTimes={horasPermitidas.map(hora => {
+                  const novaData = new Date(selectedDate || new Date());
+                  novaData.setHours(hora.getHours());
+                  novaData.setMinutes(hora.getMinutes());
+                  novaData.setSeconds(0);
+                  return novaData;
+                })}
+                showTimeSelect
+                dateFormat="dd/MM/yyyy HH:mm"
+                placeholderText="Selecione data e hora"
+              />
 
-              <label>Tema escolhido:</label>
-              <select required>
-                <option value="" disabled selected hidden>
-                  Selecione um tema
-                </option>
-                {mentores.map((tema, index) => (
-                  <option key={index} value={tema.tema}>
-                    {tema.tema}
+              <select
+                value={mentoriaSelecionado}
+                onChange={(e) => setMentoriaSelecionado(e.target.value)}
+              >
+                <option value="">Selecione a tecnologia</option>
+
+                {mentoria.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.nome}
                   </option>
                 ))}
               </select>
 
-              <button className={styles.agendarBtn}>
+              <button onClick={criarAgendamento} className={styles.agendarBtn}>
                 Confirmar Agendamento
               </button>
             </div>
           </div>
         </section>
+        <ToastContainer
+          position="top-right"
+          autoClose={1500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </div>
     </>
   );
