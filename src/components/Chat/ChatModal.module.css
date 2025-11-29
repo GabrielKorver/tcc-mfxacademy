@@ -1,11 +1,11 @@
 .chatModal {
   position: fixed;
   bottom: 130px;
-  right: 60px;
+  right: 35px;
   width: 500px;
   height: 400px;
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@
 }
 
 .chatHeader {
-  background-color: #4661FD;
+  background-color: #0D1321;
   color: #fff;
   padding: 10px;
   font-weight: bold;
@@ -67,7 +67,7 @@
 }
 
 .messageRight {
-  background-color: #4661FD;
+  background-color: #0C1525;
   color: white;
   padding: 8px 12px;
   border-radius: 16px;
@@ -89,17 +89,18 @@
 
 .chatFooter button {
   border: none;
-  background-color: #4661FD;
+  background-color: #0C1525;
   color: white;
   padding: 0 15px;
   cursor: pointer;
+  border-radius: 0;
 }
 
 .floatingButton {
   position: fixed;
   bottom: 60px;
   right: 20px;
-  background-color: #4661FD;
+  background-color: #ffffff;
   color: white;
   border: none;
   border-radius: 50%;
@@ -115,7 +116,7 @@
     width: 90%;
     height: 50%;
     right: 50%;
-    bottom: 50%;
+    bottom: 40%;
     transform: translate(50%, 50%);
   }
 

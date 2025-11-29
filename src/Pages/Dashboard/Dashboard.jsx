@@ -1,13 +1,38 @@
 import { useEffect, useState } from "react";
 import styles from "./Dashboard.module.css";
 import GraficoUsuario from "../../components/GraficoUsuario/GraficoUsuario.jsx";
-import GraficoPerguntas from "../../components/GraficoPergunta/GraficoPergunta.jsx"
-import GraficoAgendamentos from "../../components/GraficoAgendamentos/GraficoAgendamentos.jsx"
+import GraficoPerguntas from "../../components/GraficoPergunta/GraficoPergunta.jsx";
+import GraficoAgendamentos from "../../components/GraficoAgendamentos/GraficoAgendamentos.jsx";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Dashboard() {
   const [totalUsuarios, setTotalUsuarios] = useState(0);
   const [totalPerguntas, setTotalPerguntas] = useState(0);
   const [totalAgendamentos, setTotalAgendamentos] = useState(0);
+
+  // ⬇️ VERIFICA LOGIN + PERMISSÃO
+  useEffect(() => {
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+    if (!usuario) {
+      toast.error("Você precisa estar logado para acessar o Dashboard.");
+      setTimeout(() => {
+        window.location.href = "/Login";
+      }, 2000);
+      return;
+    }
+
+    const isAdmin =
+      usuario.email === "gabrielkorver76ers@gmail.com" ||
+      usuario.email === "mayaracenteno1@gmail.com";
+
+    if (!isAdmin) {
+      toast.error("Acesso negado! Você não tem permissão.");
+      setTimeout(() => {
+        window.location.href = "/Login";
+      }, 2000);
+    }
+  }, []);
 
   const getUsuario = async () => {
     try {
@@ -33,7 +58,7 @@ export default function Dashboard() {
 
       setTotalPerguntas(data.length);
     } catch (error) {
-      console.log("Erro ao buscar usuários:", error);
+      console.log("Erro ao buscar perguntas:", error);
     }
   };
 
@@ -101,6 +126,8 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+
+      <ToastContainer position="top-right" autoClose={1500} theme="colored" />
     </div>
   );
 }

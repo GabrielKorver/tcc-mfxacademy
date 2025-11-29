@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import logo from "../../assets/novo_logo.png";
 import ModalNovaPergunta from "../ModalNovaPergunta/ModalNovaPergunta";
+import { RiAdminFill } from "react-icons/ri";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -41,16 +42,23 @@ const Header = () => {
     }
   }, []);
 
+  // ⬇️ VERIFICA SE O USUÁRIO É ADMIN
+  const isAdmin =
+    usuarioLogado?.email === "gabrielkorver76ers@gmail.com" ||
+    usuarioLogado?.email === "mayaracenteno1@gmail.com";
+
   return (
     <>
       <header className={Style.container}>
         <div className={Style.brand}>
           <img src={logo} alt="Logo DevNetwork" className={Style.logoImg} />
           <h1 className={Style.logo}>DevNetwork</h1>
-          <p className={Style.textIcon}>
-            <FaHome className={Style.icon} />
-            Feed
-          </p>
+          <div className={Style.home}>
+            <p className={Style.textIcon}>
+              <FaHome className={Style.icon} />
+              Feed
+            </p>
+          </div>
         </div>
 
         <button className={Style.menuButton} onClick={toggleMenu}>
@@ -60,14 +68,20 @@ const Header = () => {
         <div
           className={`${Style.boxOptions} ${menuOpen ? Style.showMenu : ""}`}
         >
+
+          {/* ⬇️ EXIBE O PAINEL SOMENTE SE FOR ADMIN */}
+          {isAdmin && (
+            <a href="/painel" target="_blank" className={Style.textIcon}>
+              <RiAdminFill className={Style.icon} />
+              Painel
+            </a>
+          )}
+
           <p onClick={() => setShowModal(true)} className={Style.textIcon}>
             <LuMessageSquarePlus className={Style.icon} />
             Nova pergunta
           </p>
-          <p className={Style.textIcon}>
-            <FiUserPlus className={Style.icon} />
-            Adicionar Dev
-          </p>
+
           <p>
             Bem-vindo:{" "}
             <span
@@ -75,11 +89,11 @@ const Header = () => {
               className={Style.usuarioLogado}
             >
               {usuarioLogado?.nome
-                ? `${usuarioLogado.nome[0].toUpperCase()}${usuarioLogado.nome[1]?.toUpperCase() || ""
-                }`
+                ? `${usuarioLogado.nome[0].toUpperCase()}${usuarioLogado.nome[1]?.toUpperCase() || ""}`
                 : usuarioLogado?.email || ""}
             </span>
           </p>
+
           <p className={Style.textIcon} onClick={logout}>
             <FiLogOut className={Style.icon} />
             Sair

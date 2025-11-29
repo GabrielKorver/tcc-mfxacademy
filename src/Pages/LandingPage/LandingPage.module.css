@@ -13,6 +13,9 @@
   background: #0d1321;
   width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  /* cria contexto previsível */
+  z-index: 3000;
 }
 
 /* Container interno com limite */

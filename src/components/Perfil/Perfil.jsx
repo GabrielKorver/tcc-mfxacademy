@@ -54,10 +54,12 @@ const Perfil = () => {
           alt="avatar"
           style={{ width: "80px", height: "80px", borderRadius: "50%" }}
         />
-        <div className={Style.avatar_name}>
-          <p>
-            Nome: <strong>{usuario.nome}</strong>
-          </p>
+
+        <div className={Style.avatar_nome}>
+          <strong>
+            Nome:
+          </strong>
+          <p>{usuario.nome}</p>
         </div>
       </div>
 
@@ -71,19 +73,13 @@ const Perfil = () => {
 
 
       <div className={Style.bio}>
-        <p>
-          <strong>Bio</strong>
-        </p>
-        <span>{usuario.biografia}</span>
+        <strong>Bio</strong>
+        <p>{usuario.biografia}</p>
       </div>
 
       <div className={Style.tecnologias}>
-        <p>
-          <strong>Habilidades</strong>
-        </p>
-        <div className={Style.tecnologias_dev}>
-          <span>{usuario.habilidades}</span>
-        </div>
+        <strong>Habilidades</strong>
+        <p>{usuario.habilidades}</p>
       </div>
 
       {abrirModal && (

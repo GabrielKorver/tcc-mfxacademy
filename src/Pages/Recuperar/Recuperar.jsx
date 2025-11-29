@@ -5,10 +5,12 @@ const Recuperar = () => {
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
   const [tipoMsg, setTipoMsg] = useState("");
+  const [loading, setLoading] = useState(false); // 🔁 novo estado
 
   const esqueceuSenha = async () => {
     setMsg("");
     setTipoMsg("");
+    setLoading(true); // inicia carregamento
 
     try {
       const response = await fetch("http://127.0.0.1:3000/mail/recuperar", {
@@ -31,6 +33,8 @@ const Recuperar = () => {
       setMsg("Erro ao conectar ao servidor.");
       setTipoMsg("erro");
     }
+
+    setLoading(false); // finaliza carregamento
   };
 
   return (
@@ -43,18 +47,17 @@ const Recuperar = () => {
           placeholder="Digite seu email"
         />
 
-        {/* <label>Palavra passe</label>
-        <input
-          type="password"
-          onChange={(e) => setPalavra(e.target.value)}
-          placeholder="Digite sua palavra passe"
-        /> */}
-
         <button onClick={esqueceuSenha}>Recuperar senha</button>
 
-        {msg && (
+        {loading && (
+          <p className={Style.loading}>
+            🔁 Enviando...
+          </p>
+        )}
+
+        {!loading && msg && (
           <p className={tipoMsg === "sucesso" ? Style.sucesso : Style.erro}>
-            {msg}
+            {tipoMsg === "erro" ? "❌ " : ""}{msg}
           </p>
         )}
       </div>

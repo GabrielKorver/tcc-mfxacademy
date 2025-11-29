@@ -86,16 +86,22 @@ export default function Mentoria() {
         return toast.error("Preencha todos os campos!");
       }
 
-      const dataBloqueada = new Date(2025, 10, 28, 0, 0, 0); // Meses começam em 0 → 10 = novembro
+      const agora = new Date();
+
+      // Bloqueia horário 00:00:00
       if (
-        selectedDate.getFullYear() === dataBloqueada.getFullYear() &&
-        selectedDate.getMonth() === dataBloqueada.getMonth() &&
-        selectedDate.getDate() === dataBloqueada.getDate() &&
-        selectedDate.getHours() === dataBloqueada.getHours() &&
-        selectedDate.getMinutes() === dataBloqueada.getMinutes()
+        selectedDate.getHours() === 0 &&
+        selectedDate.getMinutes() === 0 &&
+        selectedDate.getSeconds() === 0
       ) {
-        return toast.error("Esta data/hora não pode ser agendada!");
+        return toast.error("Horário 00:00 não pode ser agendado!");
       }
+
+      // Bloqueia datas/horários que já passaram
+      if (selectedDate < agora) {
+        return toast.error("Não é possível agendar um horário que já passou!");
+      }
+
 
       const dataFormatada = selectedDate
         .toISOString()
@@ -231,7 +237,7 @@ export default function Mentoria() {
                 <h1 className={styles.precoAtual}>R$ 79,90</h1>
                 <br />
                 <small className={styles.duracao}>
-                  Cada mentoria tem duração de 45 minutos
+                  Cada mentoria tem duração de 1 hora.
                 </small>
               </div>
             </details>

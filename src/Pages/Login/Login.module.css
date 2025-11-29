@@ -145,3 +145,9 @@ input:focus {
   text-decoration: underline;
   color: #b8e6ff;
 }
+
+@media (max-width: 480px) {
+  .container {
+    margin: 0 1.5rem;
+  }
+}

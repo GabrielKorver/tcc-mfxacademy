@@ -56,7 +56,7 @@ export default function LandingPage() {
       </header>
 
       <section id="" className={styles.hero}>
-        <h1>Bem-vindo ao Devnetwork</h1>
+        <h1>Bem-vindo ao DevNetwork</h1>
         <p>
           Uma plataforma criada por desenvolvedores iniciantes que buscam
           transformar ideias em realidade através do código. Permite que os
@@ -91,7 +91,7 @@ export default function LandingPage() {
           </div>
           <div className={styles.card}>
             <span className={styles.icon}>✅</span>
-            <h3>Mentoria Particulares</h3>
+            <h3>Mentorias Particulares</h3>
             <p>
               Aprenda de forma personalizada e transforme conhecimento em
               oportunidades reais no mundo da tecnologia com uma mentoria
@@ -102,13 +102,12 @@ export default function LandingPage() {
 
         <br />
         <br />
-        <br />
+
         <Slide />
 
         <br />
         <br />
-        <br />
-        <br />
+
         <h1 id="projeto" className={styles.hero}>
           Tecnologias Utilizadas no Projeto
         </h1>
@@ -117,7 +116,6 @@ export default function LandingPage() {
           <Carroussel />
         </div>
 
-        <br />
         <br />
         <br />
 
@@ -205,9 +203,9 @@ export default function LandingPage() {
             contato se quiser colaborar!
           </p>
           <a href="mailto:devnetwork.adm@gmail.com?subject=Contato">
-          <button>Entrar em Contato</button>
+            <button>Entrar em Contato</button>
           </a>
-          
+
         </div>
       </section>
 

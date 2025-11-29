@@ -78,6 +78,12 @@
   margin-top: 8px;
 }
 
+.loading {
+  color: #fff;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
