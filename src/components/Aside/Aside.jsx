@@ -3,7 +3,6 @@ import {
   FaUsers,
   FaQuestion,
   FaChalkboardTeacher,
-  FaList,
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import styles from "./Aside.module.css";
@@ -13,7 +12,7 @@ const navItems = [
   { to: "usuarios", label: "Usuários", icon: <FaUsers /> },
   { to: "perguntas", label: "Perguntas", icon: <FaQuestion /> },
   { to: "mentorias", label: "Mentorias", icon: <FaChalkboardTeacher /> },
-  // { to: "assuntos", label: "Assuntos", icon: <FaList /> },
+  { to: "datahora", label: "Data e Hora", icon: <FaChalkboardTeacher /> },
 ];
 
 export default function Aside() {

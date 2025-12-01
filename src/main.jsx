@@ -14,7 +14,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import Usuarios from "./Pages/Usuarios/Usuarios";
 import Perguntas from "./Pages/Perguntas/Perguntas";
 import Mentorias from "./Pages/Mentorias/Mentorias";
-import Assuntos from "./Pages/Assuntos/Assuntos";
+import DataHora from "./Pages/DataHora/DataHora";
 
 const routes = createBrowserRouter([
   {
@@ -66,8 +66,8 @@ const routes = createBrowserRouter([
         element: <Mentorias />,
       },
       {
-        path: "assuntos",
-        element: <Assuntos />,
+        path: "datahora",
+        element: <DataHora />,
       },
     ],
   },

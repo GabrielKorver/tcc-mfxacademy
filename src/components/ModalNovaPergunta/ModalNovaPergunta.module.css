@@ -62,6 +62,13 @@ textarea {
     border-radius: 6px;
 }
 
+input:focus,
+select:focus {
+    color: #fff;
+}
+
+
+
 textarea {
     min-height: 6rem;
     resize: none;
