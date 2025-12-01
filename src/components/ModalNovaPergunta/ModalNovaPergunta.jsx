@@ -92,7 +92,7 @@ function ModalNovaPergunta({ onClose }) {
         <div className={Style.closeModal}>
           <h2>Nova Pergunta</h2>
           <span onClick={onClose}>
-            <TfiClose />
+            <TfiClose className={Style.icon} />
           </span>
         </div>
 

@@ -66,9 +66,10 @@ const Perfil = () => {
       <div className={Style.membro}>
         <span>
           <strong>Membro desde:</strong>
-          <IoTimeOutline />
-          <p>{usuario.data_criacao}</p>
+          <IoTimeOutline className={Style.icon} />
         </span>
+        <p>{usuario.data_criacao}</p>
+
       </div>
 
 

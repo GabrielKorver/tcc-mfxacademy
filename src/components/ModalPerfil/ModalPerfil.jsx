@@ -68,7 +68,7 @@ const ModalPerfil = ({ onClose, usuario }) => {
     <div className={Style.modal_overlay}>
       <div className={Style.modal_content}>
         <button className={Style.close_button} onClick={onClose}>
-          <TfiClose size={20} />
+          <TfiClose className={Style.icon} />
         </button>
 
         <h2 className={Style.tittle}>Editar Perfil</h2>

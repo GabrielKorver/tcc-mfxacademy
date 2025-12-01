@@ -3,7 +3,6 @@ import Header from "../../components/Header/Header";
 import Perfil from "../../components/Perfil/Perfil";
 import { Feed } from "../../components/Feed/Feed";
 import Footer from "../../components/Footer/Footer";
-import Filtros from "../../components/Filtros/FiltrosPerguntas"
 import Chat from "../../components/Chat/ChatModal"
 
 const Home = () => {
@@ -17,7 +16,6 @@ const Home = () => {
         </div>
 
         <div className={Style.container_right}>
-          <Filtros />
           <Feed />
         </div>
         <Chat />

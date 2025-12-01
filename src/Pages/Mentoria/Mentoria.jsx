@@ -102,16 +102,12 @@ export default function Mentoria() {
         return toast.error("Não é possível agendar um horário que já passou!");
       }
 
-
-      const dataFormatada = selectedDate
-        .toISOString()
-        .slice(0, 19)
-        .replace("T", " ");
+      const dataFormatada = new Date(selectedDate)
 
       const agendamento = {
         nome,
         telefone,
-        data_agendamento: dataFormatada,
+        data_agendamento: dataFormatada.toLocaleString("pt-br"),
         mentoria_id: mentoriaSelecionado,
       };
 
@@ -267,6 +263,7 @@ export default function Mentoria() {
                 showTimeSelect
                 dateFormat="dd/MM/yyyy HH:mm"
                 placeholderText="Selecione data e hora"
+                onChangeRaw={(e) => e.preventDefault()} // impede digitação
               />
 
               <select
