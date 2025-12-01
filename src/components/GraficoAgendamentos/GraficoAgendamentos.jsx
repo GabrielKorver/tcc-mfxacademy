@@ -1,97 +1,81 @@
+import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
-  CategoryScale,
   LinearScale,
+  CategoryScale,
   BarElement,
-  PointElement,
-  LineElement,
   Tooltip,
   Legend,
 } from "chart.js";
-import { Chart } from "react-chartjs-2";
 import { useEffect, useState } from "react";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  PointElement,
-  LineElement,
-  Tooltip,
-  Legend
-);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
-export default function GraficoUsuario() {
-  const [agendamentosPorMes, setagendamentosPorMes] = useState([]);
+const GraficoUsuario = () => {
+  const [agendamentosPorMes, setAgendamentosPorMes] = useState([]);
 
-  useEffect(() => {
-    const pegarInfosAPI = async () => {
+  useEffect(function () {
+    async function pegarInfosAPI() {
       try {
-        const respostaFetch = await fetch("http://127.0.0.1:3000/agendamentos/get");
-        const usuarios = await respostaFetch.json();
+        const respostaFetch = await fetch(
+          "http://127.0.0.1:3000/agendamentos/get"
+        );
+        const agendamentos = await respostaFetch.json();
 
+        // Array com 12 posições (Jan → Dez)
         const meses = Array(12).fill(0);
 
-        usuarios.forEach((user) => {
-          const data = new Date(user.data_criacao);
-          const mes = data.getMonth();
+        agendamentos.forEach(function (ag) {
+          const data = new Date(ag.data_agendamento); // ajuste conforme seu backend
+          const mes = data.getMonth(); // 0 a 11
           meses[mes] += 1;
         });
 
-        const resultado = meses.map((total, index) => ({
-          mes: index + 1,
-          total,
-        }));
-
-        setagendamentosPorMes(resultado);
+        setAgendamentosPorMes(meses);
       } catch (error) {
-        console.log("Erro ao buscar API", error);
+        console.log("Deu erro", error);
       }
-    };
+    }
 
     pegarInfosAPI();
   }, []);
 
   const data = {
-    labels: agendamentosPorMes.map((item) => item.mes),
-
+    labels: [
+      "Jan",
+      "Fev",
+      "Mar",
+      "Abr",
+      "Mai",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Set",
+      "Out",
+      "Nov",
+      "Dez",
+    ],
     datasets: [
       {
-        type: "bar",
         label: "Agendamentos por mês",
-        data: agendamentosPorMes.map((item) => item.total),
-        backgroundColor: "rgba(75, 192, 192, 0.5)",
-        borderColor: "rgba(75, 192, 192, 1)",
-        borderWidth: 1,
-      },
-      {
-        type: "line",
-        label: "Tendência (linha)",
-        data: agendamentosPorMes.map((item) => item.total),
-        borderColor: "#4B8AF0",
-        backgroundColor: "#4B8AF0",
-        borderWidth: 2,
-        tension: 0.3,
-        pointRadius: 5,
-        pointBackgroundColor: "#4B8AF0",
-        fill: false,
+        data: agendamentosPorMes,
+        backgroundColor: "rgba(54, 162, 235, 0.7)",
       },
     ],
   };
 
-  const options = {
+  const chartOptions = {
+    maintainAspectRatio: false,
     responsive: true,
-    maintainAspectRatio: false, // mantém largura 100% funcionando dentro do container
     scales: {
       y: {
         beginAtZero: true,
+        ticks: { precision: 0 },
       },
     },
   };
 
-  return (
-    <div style={{ width: "100%", height: "100%" }}>
-      <Chart type="bar" data={data} options={options} />
-    </div>
-  );
-}
+  return <Bar data={data} options={chartOptions} />;
+};
+
+export default GraficoUsuario;

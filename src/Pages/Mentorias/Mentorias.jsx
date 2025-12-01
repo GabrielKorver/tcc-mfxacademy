@@ -19,7 +19,7 @@ export default function Mentorias() {
     id: "",
     nome: "",
     data_agendamento: "",
-    telefone: ""
+    telefone: "",
   });
 
   const itensPorPagina = 10;
@@ -43,19 +43,31 @@ export default function Mentorias() {
       const response = await fetch(url);
       const data = await response.json();
 
-      // Converte as datas para um formato que o JS entende
-      const dataFormatada = data.map(item => {
-        const agendamento = new Date(item.data_agendamento);
+      // 1. Cria um objeto Date para cada agendamento para ordenação e formatação
+      const dataComDateObjects = data.map((item) => ({
+        ...item,
+        dateObject: new Date(item.data_agendamento),
+      }));
+
+      // 2. Ordena do mais recente para o mais antigo usando o Date object
+      dataComDateObjects.sort(
+        (a, b) => b.dateObject.getTime() - a.dateObject.getTime()
+      );
+
+      // 3. Formata a data para exibição no padrão pt-BR
+      const dataFormatada = dataComDateObjects.map((item) => {
+        const agendamento = item.dateObject;
         const criacao = new Date(item.data_criacao);
 
         return {
           ...item,
+          // Usa o dateObject para formatar
           data_agendamento: agendamento.toLocaleString("pt-BR", {
             day: "2-digit",
             month: "2-digit",
             year: "numeric",
             hour: "2-digit",
-            minute: "2-digit"
+            minute: "2-digit",
           }),
           data_criacao: criacao.toLocaleString("pt-BR", {
             day: "2-digit",
@@ -63,13 +75,10 @@ export default function Mentorias() {
             year: "numeric",
             hour: "2-digit",
             minute: "2-digit",
-            second: "2-digit"
+            second: "2-digit",
           }),
         };
       });
-
-      // Ordena do mais recente para o mais antigo
-      dataFormatada.sort((a, b) => new Date(b.data_agendamento) - new Date(a.data_agendamento));
 
       setListaAgendamentos(dataFormatada);
     } catch {
@@ -115,7 +124,10 @@ export default function Mentorias() {
       id: user.id,
       nome: user.nome,
       telefone: user.telefone,
-      data_agendamento: formatarDataParaInput(user.data_agendamento),
+      // Agora usa o dateObject para garantir que o input receba o formato YYYY-MM-DDTHH:MM
+      data_agendamento: formatarDataParaInput(
+        user.dateObject || user.data_agendamento
+      ),
     });
 
     setShowEditModal(true);
@@ -142,7 +154,8 @@ export default function Mentorias() {
 
       if (agendamentoToEdit.data_agendamento !== "") {
         // agendamentoToEdit.data_agendamento vem como "YYYY-MM-DDTHH:MM"
-        const [datePart, timePart] = agendamentoToEdit.data_agendamento.split("T");
+        const [datePart, timePart] =
+          agendamentoToEdit.data_agendamento.split("T");
         body.data_agendamento = `${datePart} ${timePart}:00`; // "YYYY-MM-DD HH:MM:SS"
       }
 
@@ -158,12 +171,10 @@ export default function Mentorias() {
         closeEditModal();
         getAgendamentos();
       }, 1500);
-
     } catch {
       toast.error("Erro ao editar.");
     }
   };
-
 
   // ------------------ PAGINAÇÃO ------------------
   const indexInicial = (paginaAtual - 1) * itensPorPagina;
@@ -231,9 +242,7 @@ export default function Mentorias() {
 
             <button
               onClick={() =>
-                setPaginaAtual((prev) =>
-                  Math.min(prev + 1, totalPaginas)
-                )
+                setPaginaAtual((prev) => Math.min(prev + 1, totalPaginas))
               }
               disabled={paginaAtual === totalPaginas}
             >
@@ -271,6 +280,7 @@ export default function Mentorias() {
 
             <label>Nome:</label>
             <input
+              className={styles.focus}
               type="text"
               value={agendamentoToEdit.nome}
               onChange={(e) =>
@@ -283,6 +293,7 @@ export default function Mentorias() {
 
             <label>Data Agendamento:</label>
             <input
+              className={styles.focus}
               type="datetime-local"
               value={agendamentoToEdit.data_agendamento}
               onChange={(e) =>
@@ -295,6 +306,7 @@ export default function Mentorias() {
 
             <label>Telefone:</label>
             <input
+              className={styles.focus}
               type="text"
               value={agendamentoToEdit.telefone}
               onChange={(e) =>
