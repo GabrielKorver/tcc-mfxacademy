@@ -20,7 +20,7 @@ const Home = () => {
         </div>
         <Chat />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

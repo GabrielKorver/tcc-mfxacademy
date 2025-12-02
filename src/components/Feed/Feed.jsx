@@ -34,12 +34,11 @@ export const Feed = () => {
     }
   };
 
-
   const listaPergutas = async () => {
     try {
       const response = await fetch("http://127.0.0.1:3000/perguntas/get");
       const data = await response.json();
-      console.log(data)
+      console.log(data);
       const initialLikes = {};
       const initialLiked = {};
       data.forEach((p) => {
@@ -76,7 +75,6 @@ export const Feed = () => {
     setVisibleCommentId((prevId) => (prevId === id ? null : id));
   };
 
-
   const getRealTime = () => {
     const termo = document.querySelector("#search").value.toLowerCase();
 
@@ -85,10 +83,11 @@ export const Feed = () => {
       return setPerguntas(perguntas);
     }
 
-    const filtrados = perguntas.filter(item =>
-      item.titulo.toLowerCase().includes(termo) ||
-      item.pergunta.toLowerCase().includes(termo) ||
-      item.assunto_nome.toLowerCase().includes(termo)
+    const filtrados = perguntas.filter(
+      (item) =>
+        item.titulo.toLowerCase().includes(termo) ||
+        item.pergunta.toLowerCase().includes(termo) ||
+        item.assunto_nome.toLowerCase().includes(termo)
     );
 
     setPerguntas(filtrados);
@@ -98,23 +97,19 @@ export const Feed = () => {
     const response = await fetch("http://127.0.0.1:3000/perguntas/get");
     const data = await response.json();
 
-    const termo = document.querySelector("#SelectTech").value
+    const termo = document.querySelector("#SelectTech").value;
 
     if (termo.trim() === "") {
       listaPergutas();
       return setPerguntas(data);
     }
 
-    const filtrados = data.filter(item =>
-      item.assunto_nome.includes(termo)
-    );
+    const filtrados = data.filter((item) => item.assunto_nome.includes(termo));
     setPerguntas(filtrados);
-  }
-
+  };
 
   const renderPergunta = (pergunta) => (
     <div key={pergunta.id} className={Style.container}>
-
       <div className={Style.box}>
         <img
           src={pergunta.user_avatar}
@@ -137,9 +132,7 @@ export const Feed = () => {
           <p>{pergunta.titulo}</p>
         </div>
         <div className={Style.titleRow}>
-          <strong>
-            Descrição da dúvida:
-          </strong>
+          <strong>Descrição da dúvida:</strong>
           <p>{pergunta.pergunta}</p>
         </div>
 
@@ -149,6 +142,21 @@ export const Feed = () => {
             <span>{pergunta.assunto_nome}</span>
           </div>
         </div>
+      </div>
+
+      <div className={Style.respostas}>
+        <details className={Style.detailsRespostas}>
+          <summary>Ver respostas</summary>
+          <div>
+            <div className={Style.usuario}>
+              <IoTimeOutline />
+              <strong>Mayara</strong>
+            </div>
+            <div>
+              <p>A resposta aparecerá aqui...</p>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div className={Style.containerLike}>
@@ -190,37 +198,27 @@ export const Feed = () => {
     </div>
   );
 
-  return <>
-    <div className={Style.filtros}>
+  return (
+    <>
+      <div className={Style.filtros}>
+        <div className={Style.inputContainer}>
+          <FiSearch className={Style.icon} />
+          <input
+            id="search"
+            type="text"
+            placeholder="Buscar perguntas..."
+            onChange={getRealTime}
+          />
+        </div>
 
-      <div className={Style.inputContainer}>
-        <FiSearch className={Style.icon} />
-        <input id="search" type="text" placeholder="Buscar perguntas..." onChange={getRealTime} />
+        <select onChange={getSelectCategory} name="Select tech" id="SelectTech">
+          <option value="">Selecione a Tecnologia</option>
+          {assuntos.map((item) => (
+            <option value={item.nome}>{item.nome}</option>
+          ))}
+        </select>
       </div>
-
-      <select
-        onChange={getSelectCategory}
-        name="Select tech"
-        id="SelectTech"
-        className={Style.select}
-      >
-        <option className={Style.option} value="">
-          Selecione a Tecnologia
-        </option>
-
-        {assuntos.map(item => (
-          <option
-            key={item.nome}
-            value={item.nome}
-            className={Style.option}
-          >
-            {item.nome}
-          </option>
-        ))}
-      </select>
-
-
-    </div>
-    {perguntas.map(renderPergunta)}
-  </>;
+      {perguntas.map(renderPergunta)}
+    </>
+  );
 };
