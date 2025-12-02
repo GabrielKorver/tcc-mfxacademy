@@ -37,7 +37,7 @@ const ModalChat = () => {
           </div>
 
           <div className={Style.chatFooter}>
-            <input type="text" placeholder="Digite uma mensagem..." />
+            <input className={Style.input} type="text" placeholder="Digite uma mensagem..." />
             <button>➤</button>
           </div>
         </div>

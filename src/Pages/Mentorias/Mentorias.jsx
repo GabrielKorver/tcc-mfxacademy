@@ -24,64 +24,78 @@ export default function Mentorias() {
 
   const itensPorPagina = 10;
 
-  // ------------------ FORMATAÇÃO DE DATA PARA O INPUT ------------------
-  function formatarDataParaInput(data) {
-    if (!data) return "";
-
-    const d = new Date(data);
-
-    // Ajuste do timezone
-    const offset = d.getTimezoneOffset();
-    const local = new Date(d.getTime() - offset * 60000);
-
-    return local.toISOString().slice(0, 16); // yyyy-MM-ddTHH:mm
+  // ------------------ FORMATAR PARA INPUT datetime-local ------------------
+  function formatarDataParaInput(date) {
+    if (!date || isNaN(date.getTime())) return "";
+    const iso = date.toISOString();
+    return iso.slice(0, 16); // YYYY-MM-DDTHH:MM
   }
 
+  // ------------------ CONVERTER FORMATOS pt-BR PARA Date ------------------
+  function parsePtBrToDate(value) {
+    if (!value) return null;
+
+    // Detectar DD/MM/YYYY HH:MM(:SS)
+    const ptbrMatch = value.match(
+      /^(\d{2})\/(\d{2})\/(\d{4})\s+(\d{2}):(\d{2})(?::(\d{2}))?$/
+    );
+
+    if (ptbrMatch) {
+      const [, dd, mm, yyyy, HH, MM, SS] = ptbrMatch;
+
+      return new Date(
+        Number(yyyy),
+        Number(mm) - 1,
+        Number(dd),
+        Number(HH),
+        Number(MM),
+        SS ? Number(SS) : 0
+      );
+    }
+
+    // ISO
+    if (/^\d{4}-\d{2}-\d{2}T/.test(value)) {
+      return new Date(value);
+    }
+
+    // Última tentativa
+    const d = new Date(value);
+    return isNaN(d.getTime()) ? null : d;
+  }
+
+  // ------------------ BUSCAR AGENDAMENTOS ------------------
   const getAgendamentos = async () => {
     try {
       const url = "http://127.0.0.1:3000/agendamentos/get";
       const response = await fetch(url);
       const data = await response.json();
 
-      // 1. Cria um objeto Date para cada agendamento para ordenação e formatação
-      const dataComDateObjects = data.map((item) => ({
-        ...item,
-        dateObject: new Date(item.data_agendamento),
-      }));
-
-      // 2. Ordena do mais recente para o mais antigo usando o Date object
-      dataComDateObjects.sort(
-        (a, b) => b.dateObject.getTime() - a.dateObject.getTime()
-      );
-
-      // 3. Formata a data para exibição no padrão pt-BR
-      const dataFormatada = dataComDateObjects.map((item) => {
-        const agendamento = item.dateObject;
-        const criacao = new Date(item.data_criacao);
+      const lista = data.map((item) => {
+        const dateObj = parsePtBrToDate(item.data_agendamento);
 
         return {
           ...item,
-          // Usa o dateObject para formatar
-          data_agendamento: agendamento.toLocaleString("pt-BR", {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-          }),
-          data_criacao: criacao.toLocaleString("pt-BR", {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-          }),
+          dateObject: dateObj,
+
+          // Exibir em pt-BR
+          data_agendamento_formatada: dateObj
+            ? dateObj.toLocaleString("pt-BR", {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+            })
+            : "Data inválida",
         };
       });
 
-      setListaAgendamentos(dataFormatada);
-    } catch {
+      // Ordenar mais recente → mais antigo
+      lista.sort((a, b) => b.dateObject - a.dateObject);
+
+      setListaAgendamentos(lista);
+    } catch (err) {
+      console.log(err);
       toast.error("Erro ao carregar agendamentos.");
     }
   };
@@ -106,15 +120,14 @@ export default function Mentorias() {
       const url = `http://127.0.0.1:3000/agendamentos/delete/${agendamentoToDelete}`;
       await fetch(url, { method: "DELETE" });
 
-      toast.success("Agendamento deletado com sucesso!");
+      toast.success("Agendamento deletado!");
 
       setListaAgendamentos((prev) =>
         prev.filter((item) => item.id !== agendamentoToDelete)
       );
     } catch {
-      toast.error("Erro ao deletar agendamento.");
+      toast.error("Erro ao deletar.");
     }
-
     closeModal();
   };
 
@@ -124,10 +137,7 @@ export default function Mentorias() {
       id: user.id,
       nome: user.nome,
       telefone: user.telefone,
-      // Agora usa o dateObject para garantir que o input receba o formato YYYY-MM-DDTHH:MM
-      data_agendamento: formatarDataParaInput(
-        user.dateObject || user.data_agendamento
-      ),
+      data_agendamento: formatarDataParaInput(user.dateObject),
     });
 
     setShowEditModal(true);
@@ -141,7 +151,6 @@ export default function Mentorias() {
     try {
       const url = `http://127.0.0.1:3000/agendamentos/put/${agendamentoToEdit.id}`;
 
-      // Monta um objeto só com o que deve atualizar
       const body = {};
 
       if (agendamentoToEdit.nome.trim() !== "") {
@@ -153,10 +162,8 @@ export default function Mentorias() {
       }
 
       if (agendamentoToEdit.data_agendamento !== "") {
-        // agendamentoToEdit.data_agendamento vem como "YYYY-MM-DDTHH:MM"
-        const [datePart, timePart] =
-          agendamentoToEdit.data_agendamento.split("T");
-        body.data_agendamento = `${datePart} ${timePart}:00`; // "YYYY-MM-DD HH:MM:SS"
+        const [datePart, timePart] = agendamentoToEdit.data_agendamento.split("T");
+        body.data_agendamento = `${datePart} ${timePart}:00`;
       }
 
       await fetch(url, {
@@ -204,7 +211,10 @@ export default function Mentorias() {
               <tr key={user.id}>
                 <td>{user.id}</td>
                 <td>{user.nome}</td>
-                <td>{user.data_agendamento}</td>
+
+                {/* Exibição pt-BR */}
+                <td>{user.data_agendamento_formatada}</td>
+
                 <td>{user.telefone}</td>
 
                 <td className={styles.acoes}>

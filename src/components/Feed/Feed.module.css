@@ -168,6 +168,18 @@ button {
   cursor: pointer;
 }
 
+.select {
+  color: #000000;
+}
+
+.option {
+  color: #000000;
+}
+
+.select:focus {
+  color: #000000;
+}
+
 .modalBtn {
   display: flex;
   justify-content: space-between;

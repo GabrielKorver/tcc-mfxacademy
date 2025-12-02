@@ -21,14 +21,17 @@ const GraficoUsuario = () => {
           "http://127.0.0.1:3000/agendamentos/get"
         );
         const agendamentos = await respostaFetch.json();
+        console.log(agendamentos);
 
-        // Array com 12 posições (Jan → Dez)
         const meses = Array(12).fill(0);
 
         agendamentos.forEach(function (ag) {
-          const data = new Date(ag.data_agendamento); // ajuste conforme seu backend
-          const mes = data.getMonth(); // 0 a 11
-          meses[mes] += 1;
+          // data_agendamento vem no formato "DD/MM/YYYY HH:MM"
+          const [dataParte, horaParte] = ag.data_agendamento.split(" ");
+          const [dia, mes, ano] = dataParte.split("/").map(Number);
+          const data = new Date(`${ano}-${String(mes).padStart(2, "0")}-${String(dia).padStart(2, "0")}T${horaParte}:00`);
+
+          meses[data.getMonth()] += 1; // incrementa o mês correto
         });
 
         setAgendamentosPorMes(meses);
@@ -42,18 +45,8 @@ const GraficoUsuario = () => {
 
   const data = {
     labels: [
-      "Jan",
-      "Fev",
-      "Mar",
-      "Abr",
-      "Mai",
-      "Jun",
-      "Jul",
-      "Ago",
-      "Set",
-      "Out",
-      "Nov",
-      "Dez",
+      "Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+      "Jul", "Ago", "Set", "Out", "Nov", "Dez",
     ],
     datasets: [
       {

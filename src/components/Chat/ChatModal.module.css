@@ -11,6 +11,7 @@
   flex-direction: column;
   overflow: hidden;
   font-family: sans-serif;
+  z-index: 1000;
 }
 
 .chatHeader {
@@ -94,6 +95,10 @@
   padding: 0 15px;
   cursor: pointer;
   border-radius: 0;
+}
+
+.input:focus {
+  color: #000000;
 }
 
 .floatingButton {

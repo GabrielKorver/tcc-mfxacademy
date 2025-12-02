@@ -198,14 +198,27 @@ export const Feed = () => {
         <input id="search" type="text" placeholder="Buscar perguntas..." onChange={getRealTime} />
       </div>
 
-      <select onChange={getSelectCategory} name="Select tech" id="SelectTech">
-        <option value="">Selecione a Tecnologia</option>
-        {
-          assuntos.map(item => (
-            <option value={item.nome}>{item.nome}</option>
-          ))
-        }
+      <select
+        onChange={getSelectCategory}
+        name="Select tech"
+        id="SelectTech"
+        className={Style.select}
+      >
+        <option className={Style.option} value="">
+          Selecione a Tecnologia
+        </option>
+
+        {assuntos.map(item => (
+          <option
+            key={item.nome}
+            value={item.nome}
+            className={Style.option}
+          >
+            {item.nome}
+          </option>
+        ))}
       </select>
+
 
     </div>
     {perguntas.map(renderPergunta)}
