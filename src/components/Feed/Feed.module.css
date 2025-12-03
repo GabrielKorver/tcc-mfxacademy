@@ -86,18 +86,9 @@
   }
 }
 
-/* .respostas {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  color: #cbd5e1;
+.focus:focus {
+  color: #000;
 }
-
-.usuario {
-  display: flex;
-  justify-content: start;
-  width: 100%;
-} */
 
 .respostas {
   width: 100%;
@@ -112,7 +103,8 @@
   color: #fff;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: block; /* garante que expanda */  
+  display: block;
+  /* garante que expanda */
 }
 
 /* Hover */
@@ -127,7 +119,8 @@
   list-style: none;
   cursor: pointer;
   display: flex;
-  justify-content: center;   /* CENTRALIZA O TEXTO */
+  justify-content: center;
+  /* CENTRALIZA O TEXTO */
   align-items: center;
   text-align: center;
   gap: 8px;
@@ -137,7 +130,8 @@
 .detailsRespostas summary::after {
   content: "▾";
   font-size: 1.1rem;
-  margin-left: 6px; /* separa do texto */
+  margin-left: 6px;
+  /* separa do texto */
   transition: transform 0.3s ease;
 }
 
@@ -155,7 +149,7 @@
 }
 
 /* Conteúdo interno */
-.detailsRespostas > div {
+.detailsRespostas>div {
   margin-top: 14px;
   padding-top: 10px;
   border-top: 1px solid #333;
@@ -183,6 +177,7 @@
     opacity: 0;
     transform: translateY(-4px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

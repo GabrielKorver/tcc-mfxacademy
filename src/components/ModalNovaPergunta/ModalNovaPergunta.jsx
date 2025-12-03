@@ -123,7 +123,7 @@ function ModalNovaPergunta({ onClose }) {
           </p>
 
           <div className={Style.tecnologias}>
-            <select onChange={(e) => setAssuntoSelecionado(e.target.value)}>
+            <select className={Style.focus} onChange={(e) => setAssuntoSelecionado(e.target.value)}>
               <option value="">Selecione a tecnologia</option>
               {assuntos.map((item) => (
                 <option key={item.id} value={item.id}>
