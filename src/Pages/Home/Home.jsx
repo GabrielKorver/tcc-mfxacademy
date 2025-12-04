@@ -2,7 +2,6 @@ import Style from "../Home/Home.module.css";
 import Header from "../../components/Header/Header";
 import Perfil from "../../components/Perfil/Perfil";
 import { Feed } from "../../components/Feed/Feed";
-import Footer from "../../components/Footer/Footer";
 import Chat from "../../components/Chat/ChatModal"
 
 const Home = () => {
@@ -20,7 +19,6 @@ const Home = () => {
         </div>
         <Chat />
       </div>
-      {/* <Footer /> */}
     </>
   );
 };

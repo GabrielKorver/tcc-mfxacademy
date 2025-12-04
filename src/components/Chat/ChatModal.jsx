@@ -78,9 +78,13 @@ const ModalChat = () => {
             <div className={Style.friendsList}>
               <h2>Conectados</h2>
               {connectedUsers.map((user, index) => (
-                <p key={index}>{user}</p>
+                <p key={index} className={Style.userItem}>
+                  {user === username && <span className={Style.greenDot}></span>}
+                  {user}
+                </p>
               ))}
             </div>
+
 
             <div className={Style.chatMessages}>
               {messages.map((msg, index) => (
