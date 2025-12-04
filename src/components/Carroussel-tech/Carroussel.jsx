@@ -39,10 +39,19 @@ function Carroussel() {
     },
 
     {
-      titulo: "TypeScript",
-      texto: "TypeScript é uma linguagem moderna baseada em JavaScript, criada para tornar o desenvolvimento mais seguro, organizado e escalável. Ele adiciona tipagem estática ao JavaScript, permitindo que erros sejam identificados ainda durante o desenvolvimento, antes mesmo do código rodar. Por ser totalmente compatível com JavaScript, TypeScript pode ser usado em qualquer projeto já existente, mas oferece recursos avançados que tornam o código mais claro e confiável. É amplamente utilizado em aplicações modernas com React, Node.js, Next.js, APIs, sistemas grandes e times que precisam de produtividade e manutenção facilitada.",
-      imagem: "https://cdn-icons-png.flaticon.com/512/5968/5968381.png",
+      titulo: "Git",
+      texto: "Git é um sistema de controle de versões distribuído que permite gerenciar e acompanhar alterações em projetos de software. Com ele, desenvolvedores podem trabalhar simultaneamente em diferentes partes do código, criar ramificações (branches), mesclar alterações e manter um histórico detalhado de todas as modificações. Git é essencial para colaboração em equipe, integração contínua e manutenção de projetos de qualquer tamanho. É amplamente utilizado junto com plataformas como GitHub, GitLab e Bitbucket.",
+      imagem: "https://avatars.githubusercontent.com/u/18133?s=280&v=4",
     },
+
+
+    {
+      titulo: "GitHub",
+      texto: "GitHub é uma plataforma de hospedagem de código-fonte baseada em Git, que facilita a colaboração entre desenvolvedores. Ele oferece ferramentas para versionamento, pull requests, issues, integração contínua e automação de workflows. É amplamente usado para projetos open source e também em empresas para gerenciar repositórios privados e públicos, além de permitir que equipes acompanhem o progresso do desenvolvimento de forma organizada.",
+      imagem: "https://www.make.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fun655fb9wln6%2FappIcon-github%2F1cbc82833bde8e77a127b331eee21ba8%2Fgithub.png&w=3840&q=75",
+    },
+
+
   ];
 
   const [index, setIndex] = useState(0);

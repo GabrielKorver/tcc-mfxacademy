@@ -141,7 +141,7 @@ export default function LandingPage() {
         <div className={styles.creatorCards}>
           <div className={styles.creator}>
             <img
-              src="https://media.licdn.com/dms/image/v2/D4D03AQHefBz7prlvuw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1728178950809?e=1764806400&v=beta&t=ZfrrR1QNfjBOpUmwbyd5l3nxRYwqMwCwrQsm9p94nk8"
+              src="https://media.licdn.com/dms/image/v2/D4D03AQHefBz7prlvuw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1728178950801?e=1766620800&v=beta&t=wIcJa4jAhJMe7XPTq7pcCLYxO_wPcGraBFnGveNnzKQ"
               alt="Gabriel Almeida"
             />
             <h3>Gabriel Almeida</h3>
@@ -169,7 +169,7 @@ export default function LandingPage() {
 
           <div className={styles.creator}>
             <img
-              src="https://media.licdn.com/dms/image/v2/D4E03AQF-x3Lc3cByfQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1700264504294?e=1764806400&v=beta&t=HSzpiSJ-fkgDJ7hhnpKO8_8Q27ixSlk8SK7eY-Bz3_s"
+              src="https://media.licdn.com/dms/image/v2/D4E03AQF-x3Lc3cByfQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1700264504294?e=1766620800&v=beta&t=YqGqILLDXpp4Appfr2GxzWNQB_0V-mJ7zuxhnhhzV3s"
               alt="Mayara Centeno"
             />
             <h3>Mayara Centeno</h3>
