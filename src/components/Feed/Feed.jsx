@@ -149,6 +149,7 @@ export const Feed = () => {
 
     const filtrados = perguntas.filter(
       (item) =>
+        item.user_name.toLowerCase().includes(termo) ||
         item.titulo.toLowerCase().includes(termo) ||
         item.pergunta.toLowerCase().includes(termo) ||
         item.assunto_nome.toLowerCase().includes(termo)

@@ -324,6 +324,7 @@ html {
   margin-top: 5rem;
   font-size: 0.9rem;
   opacity: 0.8;
+  display: block;
 }
 
 /* ====== MENU HAMBURGUER ====== */
